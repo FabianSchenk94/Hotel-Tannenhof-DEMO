@@ -440,13 +440,9 @@
   </div>
 </dialog>
 
-<!--
-  ElevenLabs-Chat-Widget:
-  Im ElevenLabs-Dashboard beim Agenten unter "Widget" den Embed-Code kopieren
-  und hier einfügen (ersetzt diesen Kommentar). Er sieht ungefähr so aus:
-  <elevenlabs-convai agent-id="DEINE_AGENT_ID"></elevenlabs-convai>
-  <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
--->
+<!-- ElevenLabs-Chat-Widget: Website-Chat des Hotel Tannenhof -->
+<elevenlabs-convai agent-id="agent_3101m4g9v3jxf1jamc4zskhkgang"></elevenlabs-convai>
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
 <script>
   // Web-App-URL des Google Apps Script (nach dem Deployment eintragen). Leer = Demo-Modus.
@@ -586,6 +582,7 @@
       `<strong>${fmtDay.format(a)} – ${fmtDay.format(b)}</strong> · ${nights} ${nights === 1 ? "Nacht" : "Nächte"} · ${guestsN} ${guestsN === 1 ? "Person" : "Personen"}` +
       (room ? ` · ${room.name}` : "") + price;
     renderCal();
+    chatBtn.hidden = !widget();
     if (typeof cal.showModal === "function") cal.showModal(); else cal.setAttribute("open", "");
   }
 
@@ -593,7 +590,6 @@
   document.getElementById("calCall").href = document.getElementById("butlerPhone").getAttribute("href");
   const chatBtn = document.getElementById("calChat");
   const widget = () => document.querySelector("elevenlabs-convai");
-  if (widget()) chatBtn.hidden = false;
   chatBtn.addEventListener("click", () => {
     cal.close();
     const w = widget(); if (!w) return;

@@ -157,7 +157,52 @@
   footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
   footer strong{color:var(--mond);font-weight:500}
 
+  /* Verfügbarkeits-Kalender */
+  .cal{border:0;padding:0;margin:auto;width:min(860px,calc(100% - 32px));max-height:calc(100% - 32px);background:#fff;color:var(--tinte);overflow:auto}
+  .cal::backdrop{background:rgba(12,19,34,.62);backdrop-filter:blur(2px)}
+  .cal[open]{animation:calIn .28s cubic-bezier(.2,.7,.2,1)}
+  @keyframes calIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .cal-head{display:flex;justify-content:space-between;align-items:start;gap:16px;padding:28px 32px 0}
+  .cal-head h2{font-size:1.9rem;margin:0}
+  .cal-sum{color:var(--grau);margin-top:6px}
+  .cal-sum strong{color:var(--tinte);font-weight:600}
+  .x{border:0;background:none;font:400 2rem/1 var(--serif);color:var(--grau);cursor:pointer;padding:0 4px}
+  .cal-body{position:relative;padding:20px 32px 8px}
+  .cal-nav{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:12px}
+  .cal-nav button{flex:0 0 auto;border:1px solid var(--linie);background:#fff;width:40px;height:40px;font:400 1.3rem/1 var(--serif);color:var(--tanne);cursor:pointer}
+  .cal-nav button[disabled]{opacity:.3;cursor:default}
+  .months{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px}
+  .month h3{font-size:1.15rem;color:var(--tanne);text-align:center;margin-bottom:10px}
+  .grid7{display:grid;grid-template-columns:repeat(7,1fr);text-align:center}
+  .grid7 .wd{font-size:.78rem;color:var(--grau);padding:4px 0 8px}
+  .day{position:relative;aspect-ratio:1;display:grid;place-items:center;font-size:.95rem;color:#9AA39D;
+       background-image:repeating-linear-gradient(135deg,transparent 0 6px,rgba(34,64,47,.06) 6px 7px);cursor:not-allowed;user-select:none}
+  .day.past{background-image:none;color:#C9CEC9}
+  .day.in{background:#DCE4D6;color:var(--tanne)}
+  .day.start,.day.end{background:var(--tanne);color:#fff;font-weight:600}
+  .day.today{outline:1px solid var(--messing);outline-offset:-4px}
+  .lock{display:flex;align-items:center;gap:10px;background:#F3F5F1;border:1px solid var(--linie);padding:9px 16px;font-size:.92rem;color:var(--tanne)}
+  .lock.nudge{animation:nudge .35s}
+  @keyframes nudge{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+  [hidden]{display:none!important}
+  .legend{display:flex;gap:20px;flex-wrap:wrap;font-size:.82rem;color:var(--grau);margin-top:14px}
+  .legend i{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:6px}
+  .cal-foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center;background:var(--nacht);color:var(--mond);padding:24px 32px;margin-top:18px}
+  .cal-foot p{color:#BFC4C9;font-size:.95rem;max-width:52ch}
+  .cal-foot strong{font-family:var(--serif);font-weight:400;font-size:1.3rem;color:var(--mond);display:block;margin-bottom:4px}
+  .cal-actions{display:flex;gap:10px;flex-wrap:wrap}
+  .cal-actions a,.cal-actions button{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 20px;font:600 .98rem var(--sans);text-decoration:none;cursor:pointer;border:1px solid transparent}
+  .call{background:var(--messing);color:#fff}
+  .chat{background:transparent;color:var(--mond);border-color:rgba(220,216,198,.4)!important}
+  .room .more{display:inline-block;margin-top:10px;background:none;border:0;padding:0;font:500 .95rem var(--sans);color:var(--tanne);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+
   @media (max-width:860px){
+    .months{grid-template-columns:1fr}
+    .months .month:nth-child(2){display:none}
+    .cal-head,.cal-body{padding-left:18px;padding-right:18px}
+    .cal-foot{grid-template-columns:1fr;padding:20px 18px}
+    .lock{font-size:.85rem;padding:8px 10px;text-align:center}
+    .cal-nav{gap:10px}
     .nav ul{display:none}
     .booking form{grid-template-columns:repeat(2,minmax(0,1fr))}
     .field{border-bottom:1px solid var(--linie)}
@@ -175,7 +220,7 @@
     .hero-text{padding-bottom:130px}
     .hero::after{background:linear-gradient(0deg,rgba(12,19,34,.88) 0%,rgba(12,19,34,.35) 70%,rgba(12,19,34,.55) 100%)}
   }
-  @media (prefers-reduced-motion:reduce){.hero .ph img{animation:none}html{scroll-behavior:auto}}
+  @media (prefers-reduced-motion:reduce){.hero .ph img,.cal[open],.lock.nudge{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -222,8 +267,7 @@
         <select id="cat"><option value="">Alle Zimmer</option></select></div>
       <button class="btn" type="submit">Verfügbarkeit prüfen</button>
     </form>
-    <div class="result" id="availResult" role="status" aria-live="polite"></div>
-  </div>
+      </div>
 
   <section id="zimmer">
     <div class="wrap">
@@ -330,10 +374,10 @@
     <div class="wrap">
       <div>
         <h2>Rufen Sie unseren Butler an</h2>
-        <p>Unser digitaler Butler beantwortet Ihre Fragen rund um die Uhr, prüft freie Zimmer und reserviert Ihren Tisch. Auf Deutsch, Englisch und in weiteren Sprachen.</p>
+        <p>Unser digitaler Butler Ferdinand beantwortet Ihre Fragen rund um die Uhr, prüft freie Zimmer und reserviert Ihren Tisch. Auf Deutsch, Englisch und in weiteren Sprachen.</p>
       </div>
       <!-- BUTLER_NUMMER: hier die Zadarma-Nummer eintragen -->
-      <a class="phone" href="tel:+497610000000">0761 000 000 0</a>
+      <a class="phone" id="butlerPhone" href="tel:+497610000000">0761 000 000 0</a>
     </div>
   </section>
 
@@ -359,6 +403,42 @@
     <div>Fiktives Demo-Hotel. Konzept und KI-Agenten: <a href="https://www.linkedin.com/in/fabianschenk-ai">Fabian Schenk</a></div>
   </div>
 </footer>
+
+<dialog class="cal" id="cal" aria-labelledby="calTitle">
+  <div class="cal-head">
+    <div>
+      <h2 id="calTitle">Ihr Aufenthalt</h2>
+      <p class="cal-sum" id="calSum"></p>
+    </div>
+    <button class="x" type="button" id="calClose" aria-label="Kalender schließen">×</button>
+  </div>
+  <div class="cal-body">
+    <div class="cal-nav">
+      <button type="button" id="calPrev" aria-label="Vorheriger Monat">‹</button>
+      <div class="lock" id="calLock">
+        <svg width="16" height="18" viewBox="0 0 16 18" aria-hidden="true"><rect x="1" y="8" width="14" height="9" fill="none" stroke="#22402F" stroke-width="1.6"/><path d="M4 8V5a4 4 0 0 1 8 0v3" fill="none" stroke="#22402F" stroke-width="1.6"/></svg>
+        <span>Online-Buchung gesperrt – Ferdinand bucht für Sie</span>
+      </div>
+      <button type="button" id="calNext" aria-label="Nächster Monat">›</button>
+    </div>
+    <div class="months" id="calMonths"></div>
+    <div class="legend">
+      <span><i style="background:#22402F"></i>Anreise und Abreise</span>
+      <span><i style="background:#DCE4D6"></i>Ihre Nächte</span>
+      <span><i style="background-image:repeating-linear-gradient(135deg,transparent 0 4px,rgba(34,64,47,.18) 4px 5px)"></i>Nur über Ferdinand buchbar</span>
+    </div>
+  </div>
+  <div class="cal-foot">
+    <div>
+      <strong>Ferdinand prüft Ihre Wunschdaten</strong>
+      <p>Unser digitaler Butler sieht die aktuelle Belegung, nennt Ihnen freie Zimmer mit Preis und bucht direkt. Rund um die Uhr, auf Deutsch, Englisch und in weiteren Sprachen.</p>
+    </div>
+    <div class="cal-actions">
+      <a class="call" id="calCall" href="tel:+497610000000">Ferdinand anrufen</a>
+      <button class="chat" type="button" id="calChat" hidden>Im Chat fragen</button>
+    </div>
+  </div>
+</dialog>
 
 <!--
   ElevenLabs-Chat-Widget:
@@ -406,6 +486,7 @@
           <div class="meta">${r.size} m² · bis ${r.max} Personen</div>
           <p>${r.text}</p>
           <div class="price">ab ${r.price} €<small>pro Nacht</small></div>
+          <button class="more" type="button" data-cat="${r.id}">Verfügbarkeit ansehen</button>
         </div>
       </article>`);
     catSelect.insertAdjacentHTML("beforeend", `<option value="${r.id}">${r.name}</option>`);
@@ -457,20 +538,87 @@
   function show(el, html){ el.innerHTML = html; el.classList.add("show"); }
   const val = id => document.getElementById(id).value;
 
-  document.getElementById("availForm").addEventListener("submit", async e => {
-    e.preventDefault();
-    const out = document.getElementById("availResult");
-    const payload = {action:"check_availability", check_in:val("arr"), check_out:val("dep"), guests:+val("guests"), category:val("cat")};
-    show(out, "Einen Moment, wir prüfen die Zimmer …");
-    try{
-      const r = await callApi(payload);
-      if(r.demo){ show(out, "Demo-Modus: Für eine echte Abfrage rufen Sie unseren Butler an oder fragen Sie im Chat."); return; }
-      if(!r.ok){ show(out, r.error || "Die Abfrage hat nicht geklappt. Bitte prüfen Sie die Daten."); return; }
-      const free = r.categories.filter(c => c.available > 0);
-      show(out, free.length
-        ? `<strong>${r.nights} ${r.nights===1?"Nacht":"Nächte"}:</strong><br>` + free.map(c => `${c.name}: noch ${c.available} frei, ${c.total_price} € gesamt`).join("<br>") + "<br>Buchen Sie telefonisch beim Butler oder im Chat."
-        : "Für diesen Zeitraum ist leider nichts mehr frei. Probieren Sie ein anderes Datum.");
-    }catch(err){ show(out, "Keine Verbindung zum Buchungssystem. Bitte versuchen Sie es später erneut."); }
+  // Verfügbarkeit: Kalender mit gesperrten Tagen, Buchung läuft über Ferdinand
+  const cal = document.getElementById("cal");
+  const monthsEl = document.getElementById("calMonths");
+  const lockEl = document.getElementById("calLock");
+  const fmtMonth = new Intl.DateTimeFormat("de-DE", {month:"long", year:"numeric"});
+  const fmtDay = new Intl.DateTimeFormat("de-DE", {weekday:"short", day:"numeric", month:"long"});
+  const parse = v => { const [y,m,d] = v.split("-").map(Number); return new Date(y, m-1, d); };
+  const key = d => `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+  let stay = null, view = null;
+
+  function renderCal(){
+    const today = new Date(); today.setHours(0,0,0,0);
+    const inRange = d => stay && d >= stay.a && d <= stay.b;
+    monthsEl.innerHTML = [0,1].map(off => {
+      const first = new Date(view.getFullYear(), view.getMonth()+off, 1);
+      const lead = (first.getDay()+6) % 7;
+      const days = new Date(first.getFullYear(), first.getMonth()+1, 0).getDate();
+      let cells = ["Mo","Di","Mi","Do","Fr","Sa","So"].map(w => `<div class="wd">${w}</div>`).join("");
+      cells += "<div></div>".repeat(lead);
+      for (let n = 1; n <= days; n++){
+        const d = new Date(first.getFullYear(), first.getMonth(), n);
+        const cls = ["day"];
+        if (d < today) cls.push("past");
+        if (key(d) === key(today)) cls.push("today");
+        if (inRange(d)) cls.push("in");
+        if (stay && key(d) === key(stay.a)) cls.push("start");
+        if (stay && key(d) === key(stay.b)) cls.push("end");
+        cells += `<div class="${cls.join(" ")}" aria-disabled="true">${n}</div>`;
+      }
+      return `<div class="month"><h3>${fmtMonth.format(first)}</h3><div class="grid7">${cells}</div></div>`;
+    }).join("");
+    const min = new Date(today.getFullYear(), today.getMonth(), 1);
+    document.getElementById("calPrev").disabled = view <= min;
+  }
+
+  function openCal(catId){
+    const a = parse(val("arr")), b = parse(val("dep"));
+    if (!(b > a)) { document.getElementById("dep").focus(); return; }
+    stay = {a, b};
+    view = new Date(a.getFullYear(), a.getMonth(), 1);
+    const nights = Math.round((b - a) / 86400000);
+    const guestsN = +val("guests");
+    const room = ROOMS.find(r => r.id === (catId || val("cat")));
+    const price = room ? ` · ab ${(room.price * nights).toLocaleString("de-DE")} € für ${nights === 1 ? "die Nacht" : "alle Nächte"}` : "";
+    document.getElementById("calSum").innerHTML =
+      `<strong>${fmtDay.format(a)} – ${fmtDay.format(b)}</strong> · ${nights} ${nights === 1 ? "Nacht" : "Nächte"} · ${guestsN} ${guestsN === 1 ? "Person" : "Personen"}` +
+      (room ? ` · ${room.name}` : "") + price;
+    renderCal();
+    if (typeof cal.showModal === "function") cal.showModal(); else cal.setAttribute("open", "");
+  }
+
+  // Telefonnummer und Chat-Knopf an die Butler-Sektion koppeln (eine Stelle zum Pflegen)
+  document.getElementById("calCall").href = document.getElementById("butlerPhone").getAttribute("href");
+  const chatBtn = document.getElementById("calChat");
+  const widget = () => document.querySelector("elevenlabs-convai");
+  if (widget()) chatBtn.hidden = false;
+  chatBtn.addEventListener("click", () => {
+    cal.close();
+    const w = widget(); if (!w) return;
+    const btn = w.shadowRoot && w.shadowRoot.querySelector("button");
+    if (btn) btn.click(); else w.scrollIntoView({behavior:"smooth"});
+  });
+
+  document.getElementById("availForm").addEventListener("submit", e => { e.preventDefault(); openCal(); });
+  document.querySelectorAll(".room .more").forEach(b => b.addEventListener("click", () => {
+    document.getElementById("cat").value = b.dataset.cat;
+    openCal(b.dataset.cat);
+  }));
+  document.getElementById("calClose").addEventListener("click", () => cal.close());
+  cal.addEventListener("click", e => { if (e.target === cal) cal.close(); });
+  document.getElementById("calPrev").addEventListener("click", () => { view.setMonth(view.getMonth() - 1); renderCal(); });
+  document.getElementById("calNext").addEventListener("click", () => { view.setMonth(view.getMonth() + 1); renderCal(); });
+  monthsEl.addEventListener("click", e => {
+    if (!e.target.classList.contains("day")) return;
+    lockEl.classList.remove("nudge"); void lockEl.offsetWidth; lockEl.classList.add("nudge");
+  });
+  // Abreise immer nach der Anreise halten
+  document.getElementById("arr").addEventListener("change", () => {
+    const a = parse(val("arr")), dep = document.getElementById("dep");
+    if (!(parse(dep.value) > a)) { const n = new Date(a); n.setDate(n.getDate()+1); dep.value = `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,"0")}-${String(n.getDate()).padStart(2,"0")}`; }
+    dep.min = val("arr");
   });
 
   document.getElementById("tableForm").addEventListener("submit", async e => {

@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hotel Tannenhof Hinterzarten – Wald & Spa Hotel im Hochschwarzwald</title>
+<meta name="description" content="Hotel Tannenhof Hinterzarten ★★★★S – Wald & Spa Hotel im Hochschwarzwald. Fiktives Demo-Hotel für KI-Agenten.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 4 L46 56 H18 Z' fill='%2322402F'/%3E%3C/svg%3E">
+<link rel="preload" as="image" href="img/hero-blaue-stunde.jpg">
+<style>
+  :root{
+    --nacht:#16213A;      /* Nachthimmel */
+    --tanne:#22402F;      /* Tannengrün */
+    --moos:#7D8C55;       /* Moos */
+    --mond:#DCD8C6;       /* helles Leinen */
+    --nebel:#EEF0EB;      /* Seitenhintergrund */
+    --messing:#A88A4E;    /* Akzent */
+    --tinte:#1B2421;
+    --grau:#5B6660;
+    --linie:#CBD1C8;
+    --serif:"Marcellus", Georgia, serif;
+    --sans:"Figtree", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--nebel);color:var(--tinte);font:400 1.0625rem/1.65 var(--sans)}
+  img,svg{display:block;max-width:100%}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--messing);outline-offset:3px}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.15;letter-spacing:.01em}
+  h2{font-size:clamp(2rem,4vw,2.9rem);color:var(--tanne);margin-bottom:.6rem}
+  h3{font-size:1.45rem}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  .lead{max-width:60ch;color:var(--grau);font-size:1.12rem}
+  section{padding:96px 0}
+
+  /* Bildrahmen mit Platzhalter: fehlt die Datei, sieht man ihren Namen */
+  .ph{position:relative;overflow:hidden;background:#D5DBD2;aspect-ratio:3/2;margin:0}
+  .ph::before{content:attr(data-file);position:absolute;inset:0;display:grid;place-items:center;padding:12px;text-align:center;font:500 .85rem var(--sans);color:var(--grau)}
+  .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ph.dark{background:#1E2E3A}
+  .ph.dark::before{color:#8D99A3}
+
+  /* Navigation */
+  .nav{position:absolute;inset:0 0 auto;z-index:5;color:var(--mond)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:84px}
+  .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .logo span{font-family:var(--serif);font-size:1.5rem;letter-spacing:.06em}
+  .logo small{display:block;font:500 .72rem/1 var(--sans);letter-spacing:.12em;opacity:.8;margin-top:4px}
+  .nav ul{display:flex;gap:28px;list-style:none;font-size:.95rem}
+  .nav ul a{text-decoration:none;opacity:.9}
+  .nav ul a:hover{opacity:1;text-decoration:underline;text-underline-offset:5px}
+
+  /* Header: Vollbild-Foto mit langsamem Zoom */
+  .hero{position:relative;min-height:min(94vh,860px);background:var(--nacht);color:var(--mond);overflow:hidden;display:flex;align-items:flex-end}
+  .hero .ph{position:absolute;inset:0;aspect-ratio:auto;background:var(--nacht)}
+  .hero .ph::before{align-items:start;padding-top:120px;color:#55627A}
+  .hero .ph img{transform-origin:70% 60%;animation:drift 22s ease-out both}
+  @keyframes drift{from{transform:scale(1.12)}to{transform:scale(1)}}
+  .hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(90deg,rgba(12,19,34,.82) 0%,rgba(12,19,34,.45) 45%,rgba(12,19,34,0) 75%),
+               linear-gradient(0deg,rgba(12,19,34,.75) 0%,rgba(12,19,34,0) 45%)}
+  .hero-text{position:relative;z-index:2;width:100%;padding-bottom:150px}
+  .hero h1{font-size:clamp(3rem,8.5vw,6.8rem);line-height:.98;max-width:11ch}
+  .hero p{max-width:44ch;margin-top:22px;font-size:1.15rem;color:#D4D7CD}
+  .stars{font-size:1rem;letter-spacing:.3em;color:var(--messing);margin-bottom:14px}
+
+  /* Buchungsleiste */
+  .booking{position:relative;z-index:3;margin-top:-70px}
+  .booking form{background:#fff;border:1px solid var(--linie);display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) auto}
+  .field{min-width:0;padding:16px 20px;border-right:1px solid var(--linie);display:flex;flex-direction:column;gap:4px}
+  .field label{font-size:.82rem;color:var(--grau)}
+  .field input,.field select{width:100%;min-width:0;border:0;font:500 1rem var(--sans);color:var(--tinte);background:transparent;padding:2px 0}
+  .btn{background:var(--tanne);color:#fff;border:0;font:600 1rem var(--sans);padding:0 32px;cursor:pointer;min-height:56px}
+  .btn:hover{background:#1A3325}
+  .btn.light{background:var(--messing)}
+  .result{margin-top:14px;padding:14px 18px;background:#fff;border-left:3px solid var(--moos);display:none}
+  .result.show{display:block}
+
+  /* Zimmer mit Karussell */
+  .rooms{margin-top:48px;display:grid;gap:56px}
+  .room{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:44px;align-items:center}
+  .room:nth-child(even) .carousel{order:2}
+  .room h3{color:var(--tanne);font-size:1.7rem}
+  .room .meta{font-size:.92rem;color:var(--grau);margin:6px 0 12px}
+  .room .price{margin-top:18px;font-family:var(--serif);font-size:1.9rem;color:var(--tanne)}
+  .room .price small{font:400 .88rem var(--sans);color:var(--grau);margin-left:6px}
+  .carousel{position:relative}
+  .track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .track::-webkit-scrollbar{display:none}
+  .track .ph{flex:0 0 100%;scroll-snap-align:start}
+  .cbtn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.88);color:var(--tanne);font:400 1.4rem/1 var(--serif);cursor:pointer;display:grid;place-items:center}
+  .cbtn:hover{background:#fff}
+  .cbtn.prev{left:12px}.cbtn.next{right:12px}
+  .cbtn[disabled]{opacity:0;pointer-events:none}
+  .dots{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:8px}
+  .dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.5)}
+  .dots span.on{background:#fff}
+  .note{margin-top:40px;font-size:.92rem;color:var(--grau);max-width:70ch}
+
+  /* Das Haus */
+  .house{padding-top:0}
+  .mosaic{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:auto auto;gap:16px;margin-top:36px}
+  .mosaic .ph:first-child{grid-row:1/3;aspect-ratio:auto;min-height:100%}
+  .mosaic figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 16px 12px;color:#fff;font-size:.92rem;background:linear-gradient(0deg,rgba(0,0,0,.55),rgba(0,0,0,0))}
+
+  /* Kulinarik */
+  .dine{background:var(--tanne);color:var(--mond)}
+  .dine h2{color:var(--mond)}
+  .dine .lead{color:#B9C1B0}
+  .venues{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px;margin-top:48px}
+  .pair{position:relative;margin-bottom:64px}
+  .pair .ph:first-child{background:#2C4A3A}
+  .pair .ph:last-child{position:absolute;width:46%;right:-16px;bottom:-48px;border:6px solid var(--tanne);background:#2C4A3A}
+  .pair .ph::before{color:#8FA294}
+  .venue p{color:#C6CCBC;margin:8px 0 16px;max-width:46ch}
+  .hours{width:100%;border-collapse:collapse;font-size:.97rem}
+  .hours td{padding:8px 0;border-bottom:1px solid rgba(220,216,198,.2)}
+  .hours td:last-child{text-align:right}
+  .reserve{margin-top:64px;background:rgba(0,0,0,.18);padding:36px}
+  .reserve h3{margin-bottom:6px}
+  .reserve .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:20px}
+  .reserve label{min-width:0;display:flex;flex-direction:column;gap:6px;font-size:.85rem;color:#C6CCBC}
+  .reserve input,.reserve select{width:100%;min-width:0;font:500 1rem var(--sans);padding:12px;border:1px solid rgba(220,216,198,.35);background:rgba(255,255,255,.06);color:var(--mond)}
+  .reserve select option{color:var(--tinte)}
+  .reserve .btn{margin-top:20px}
+  .reserve .result{color:var(--tinte)}
+
+  /* Spa & Lage */
+  .two{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:64px;align-items:start}
+  .spa-img{margin-bottom:28px}
+  .facts{list-style:none;margin-top:24px}
+  .facts li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--linie)}
+  .facts li span:last-child{color:var(--grau);text-align:right}
+  .map{background:#fff;border:1px solid var(--linie);padding:24px}
+  .map address{font-style:normal;margin-top:16px}
+
+  /* Butler */
+  .butler{background:var(--nacht);color:var(--mond)}
+  .butler .wrap{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+  .butler h2{color:var(--mond)}
+  .butler p{color:#BFC4C9;max-width:56ch}
+  .phone{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.6rem);color:var(--mond);text-decoration:none;border-bottom:1px solid var(--messing);white-space:nowrap}
+
+  /* FAQ */
+  details{border-bottom:1px solid var(--linie);padding:18px 0}
+  summary{cursor:pointer;font-weight:500;font-size:1.08rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  summary::after{content:"+";font-family:var(--serif);font-size:1.4rem;color:var(--moos);line-height:1}
+  details[open] summary::after{content:"–"}
+  details p{margin-top:10px;color:var(--grau);max-width:68ch}
+  .faq{max-width:780px;margin-top:32px}
+
+  footer{background:#0F1828;color:#9AA2AE;padding:48px 0;font-size:.92rem}
+  footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  footer strong{color:var(--mond);font-weight:500}
+
+  @media (max-width:860px){
+    .nav ul{display:none}
+    .booking form{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .field{border-bottom:1px solid var(--linie)}
+    .booking .btn{grid-column:1/-1}
+    .room{grid-template-columns:1fr;gap:20px}
+    .room:nth-child(even) .carousel{order:0}
+    .mosaic{grid-template-columns:1fr}
+    .mosaic .ph:first-child{grid-row:auto;aspect-ratio:3/2;min-height:0}
+    .venues,.two,.butler .wrap{grid-template-columns:1fr;gap:72px}
+    .pair .ph:last-child{right:-8px;bottom:-40px}
+    .reserve .grid{grid-template-columns:1fr}
+    .reserve{padding:24px}
+    section{padding:72px 0}
+    .house{padding-top:0}
+    .hero-text{padding-bottom:130px}
+    .hero::after{background:linear-gradient(0deg,rgba(12,19,34,.88) 0%,rgba(12,19,34,.35) 70%,rgba(12,19,34,.55) 100%)}
+  }
+  @media (prefers-reduced-motion:reduce){.hero .ph img{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Hotel Tannenhof Startseite">
+      <svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M32 4 L40 20 H35 L44 36 H38 L48 52 H16 L26 36 H20 L29 20 H24 Z" fill="#B7C28E"/>
+        <rect x="30" y="52" width="4" height="8" fill="#B7C28E"/>
+      </svg>
+      <div><span>Tannenhof</span><small>Hinterzarten · Wald & Spa Hotel</small></div>
+    </a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="#zimmer">Zimmer</a></li>
+        <li><a href="#kulinarik">Restaurant</a></li>
+        <li><a href="#spa">Spa & Lage</a></li>
+        <li><a href="#fragen">Fragen</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-label="Willkommen">
+    <figure class="ph" data-file="img/hero-blaue-stunde.jpg">
+      <img src="img/hero-blaue-stunde.jpg" alt="Das Hotel Tannenhof zur blauen Stunde zwischen Tannen" onerror="this.remove()">
+    </figure>
+    <div class="wrap hero-text">
+      <p class="stars" aria-label="4 Sterne Superior">★★★★ S</p>
+      <h1>Schlafen, wo der Wald leise wird</h1>
+      <p>Wald & Spa Hotel auf 900 Metern in Hinterzarten im Hochschwarzwald. 40 Zimmer, ein Gourmetrestaurant und ein Spa mit Blick in die Tannen.</p>
+    </div>
+  </section>
+
+  <div class="wrap booking">
+    <form id="availForm">
+      <div class="field"><label for="arr">Anreise</label><input id="arr" type="date" required></div>
+      <div class="field"><label for="dep">Abreise</label><input id="dep" type="date" required></div>
+      <div class="field"><label for="guests">Personen</label>
+        <select id="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div>
+      <div class="field"><label for="cat">Kategorie</label>
+        <select id="cat"><option value="">Alle Zimmer</option></select></div>
+      <button class="btn" type="submit">Verfügbarkeit prüfen</button>
+    </form>
+    <div class="result" id="availResult" role="status" aria-live="polite"></div>
+  </div>
+
+  <section id="zimmer">
+    <div class="wrap">
+      <h2>Zimmer & Suiten</h2>
+      <p class="lead">Holz aus dem Schwarzwald, Loden, Leinen und viel Ruhe. Alle Preise gelten pro Nacht für zwei Personen, inklusive Frühstück und Spa.</p>
+      <div class="rooms" id="roomList"></div>
+      <p class="note">Einzelbelegung 30 € günstiger. Zustellbett für Kinder bis 12 Jahre 45 €, Kinder bis 3 Jahre im Babybett kostenlos. Ab 2 Nächten ist die Hochschwarzwald Card inklusive. Kostenfreie Stornierung bis 7 Tage vor Anreise.</p>
+    </div>
+  </section>
+
+  <section class="house" aria-label="Das Haus">
+    <div class="wrap">
+      <h2>Das Haus</h2>
+      <p class="lead">Ein Schwarzwaldhaus mit 40 Zimmern, Kaminlounge und einem Wintergarten, in dem morgens die Sonne über die Wiese kommt.</p>
+      <div class="mosaic">
+        <figure class="ph" data-file="img/hotel-sommer.jpg"><img src="img/hotel-sommer.jpg" alt="Das Hotel im Sommer mit Blumenwiese" loading="lazy" onerror="this.remove()"><figcaption>Sommer am Tannenhof</figcaption></figure>
+        <figure class="ph" data-file="img/lounge-kamin.jpg"><img src="img/lounge-kamin.jpg" alt="Kaminlounge mit offenem Feuer" loading="lazy" onerror="this.remove()"><figcaption>Kaminlounge</figcaption></figure>
+        <figure class="ph" data-file="img/fruehstueck-wintergarten.jpg"><img src="img/fruehstueck-wintergarten.jpg" alt="Frühstücksbuffet im Wintergarten" loading="lazy" onerror="this.remove()"><figcaption>Frühstück im Wintergarten</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="kulinarik" class="dine">
+    <div class="wrap">
+      <h2>Restaurant & Kaminstube</h2>
+      <p class="lead">Zwei Küchen, eine Haltung: was im Hochschwarzwald wächst, gefischt und gejagt wird, kommt auf den Teller.</p>
+      <div class="venues">
+        <div class="venue">
+          <div class="pair">
+            <figure class="ph" data-file="img/belvedere-raum.jpg"><img src="img/belvedere-raum.jpg" alt="Gourmetrestaurant Belvedere am Abend" loading="lazy" onerror="this.remove()"></figure>
+            <figure class="ph" data-file="img/belvedere-gericht.jpg"><img src="img/belvedere-gericht.jpg" alt="Rehrücken mit Sellerie und Brombeeren" loading="lazy" onerror="this.remove()"></figure>
+          </div>
+          <h3>Gourmetrestaurant Belvedere</h3>
+          <p>Feine regionale Küche mit saisonalen Menüs. 5-Gang-Menü 98&nbsp;€, 7-Gang-Menü 128&nbsp;€, Weinbegleitung ab 59&nbsp;€.</p>
+          <table class="hours">
+            <tr><td>Mittwoch bis Sonntag</td><td>18:00 – 22:00 Uhr</td></tr>
+            <tr><td>Letzte Bestellung</td><td>21:00 Uhr</td></tr>
+            <tr><td>Montag und Dienstag</td><td>Ruhetag</td></tr>
+          </table>
+        </div>
+        <div class="venue">
+          <div class="pair">
+            <figure class="ph" data-file="img/kaminstube-raum.jpg"><img src="img/kaminstube-raum.jpg" alt="Kaminstube mit Kachelofen" loading="lazy" onerror="this.remove()"></figure>
+            <figure class="ph" data-file="img/kaminstube-gericht.jpg"><img src="img/kaminstube-gericht.jpg" alt="Schwarzwaldforelle mit Mandelbutter" loading="lazy" onerror="this.remove()"></figure>
+          </div>
+          <h3>Kaminstube</h3>
+          <p>Schwarzwälder Klassiker am Kachelofen: Schwarzwaldforelle, Schäufele, Kässpätzle und Kirschtorte.</p>
+          <table class="hours">
+            <tr><td>Mittag, täglich</td><td>12:00 – 14:00 Uhr</td></tr>
+            <tr><td>Abend, täglich</td><td>18:00 – 21:30 Uhr</td></tr>
+            <tr><td>Frühstück im Wintergarten</td><td>7:00 – 10:30 Uhr</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <form class="reserve" id="tableForm">
+        <h3>Tisch reservieren</h3>
+        <p style="color:#C6CCBC">Auch für Gäste, die nicht im Hotel übernachten.</p>
+        <div class="grid">
+          <label>Restaurant
+            <select id="t_venue"><option>Belvedere</option><option>Kaminstube</option></select></label>
+          <label>Datum<input id="t_date" type="date" required></label>
+          <label>Uhrzeit
+            <select id="t_time"></select></label>
+          <label>Personen<input id="t_pers" type="number" min="1" max="10" value="2" required></label>
+          <label>Name<input id="t_name" type="text" autocomplete="name" required></label>
+          <label>Telefon<input id="t_phone" type="tel" autocomplete="tel"></label>
+        </div>
+        <button class="btn light" type="submit">Tisch reservieren</button>
+        <div class="result" id="tableResult" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
+  <section id="spa">
+    <div class="wrap two">
+      <div>
+        <figure class="ph spa-img" data-file="img/spa-pool.jpg"><img src="img/spa-pool.jpg" alt="Innen- und Außenpool im Tannenhof Spa" loading="lazy" onerror="this.remove()"></figure>
+        <h2>Tannenhof Spa</h2>
+        <p class="lead">1.200 m² mit Innen- und Außenpool bei 32 °C, finnischer Sauna, Bio-Sauna, Dampfbad und einem Ruheraum, der direkt in den Wald schaut.</p>
+        <ul class="facts">
+          <li><span>Öffnungszeiten</span><span>täglich 7:00 – 21:00 Uhr</span></li>
+          <li><span>Saunabereich</span><span>ab 16 Jahren</span></li>
+          <li><span>Massagen & Anwendungen</span><span>ab 69 €</span></li>
+          <li><span>Waldbaden mit Guide</span><span>Samstag 10 Uhr, für Hotelgäste frei</span></li>
+          <li><span>E-Bike-Verleih</span><span>35 € pro Tag</span></li>
+        </ul>
+      </div>
+      <div class="map">
+        <h3 style="color:var(--tanne)">So finden Sie uns</h3>
+        <address>Hotel Tannenhof<br>Höhenweg 12<br>79856 Hinterzarten</address>
+        <ul class="facts">
+          <li><span>Titisee</span><span>5 Min.</span></li>
+          <li><span>Feldberg</span><span>15 Min.</span></li>
+          <li><span>Freiburg im Breisgau</span><span>30 Min.</span></li>
+          <li><span>Flughafen Basel-Mulhouse</span><span>70 Min.</span></li>
+          <li><span>Bahnhof Hinterzarten</span><span>Shuttle, 10 – 20 Uhr</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="butler" id="butler">
+    <div class="wrap">
+      <div>
+        <h2>Rufen Sie unseren Butler an</h2>
+        <p>Unser digitaler Butler beantwortet Ihre Fragen rund um die Uhr, prüft freie Zimmer und reserviert Ihren Tisch. Auf Deutsch, Englisch und in weiteren Sprachen.</p>
+      </div>
+      <!-- BUTLER_NUMMER: hier die Zadarma-Nummer eintragen -->
+      <a class="phone" href="tel:+497610000000">0761 000 000 0</a>
+    </div>
+  </section>
+
+  <section id="fragen">
+    <div class="wrap">
+      <h2>Häufige Fragen</h2>
+      <div class="faq">
+        <details><summary>Wann kann ich einchecken und auschecken?</summary><p>Check-in ab 15:00 Uhr, Check-out bis 11:00 Uhr. Nach Verfügbarkeit können Sie ab 12 Uhr kostenlos einchecken. Late Check-out bis 14 Uhr kostet 40 €. Das Spa dürfen Sie ab Ankunft nutzen.</p></details>
+        <details><summary>Darf mein Hund mitkommen?</summary><p>Ja, Hunde bis mittlere Größe sind willkommen. 25 € pro Nacht inklusive Decke und Napf. Spa und Gourmetrestaurant Belvedere bleiben hundefrei.</p></details>
+        <details><summary>Wo parke ich und kann ich mein Auto laden?</summary><p>40 Außenparkplätze sind kostenlos, die Tiefgarage kostet 15 € pro Nacht. Vier E-Ladestationen stehen am Haus, der Strom wird nach Verbrauch abgerechnet.</p></details>
+        <details><summary>Wie komme ich ohne Auto zu Ihnen?</summary><p>Mit der Bahn bis Hinterzarten. Von dort holt Sie unser kostenloser Shuttle täglich zwischen 10 und 20 Uhr ab. Bitte melden Sie sich vorher an.</p></details>
+        <details><summary>Gibt es vegetarische und vegane Gerichte?</summary><p>Ja, in allen Restaurants. Im Belvedere servieren wir auf Anfrage ein komplett vegetarisches Menü.</p></details>
+        <details><summary>Bis wann kann ich kostenlos stornieren?</summary><p>Bis 7 Tage vor Anreise kostenfrei. Danach berechnen wir 80 % des Zimmerpreises.</p></details>
+        <details><summary>Was ist die Hochschwarzwald Card?</summary><p>Ab 2 Nächten inklusive: freie Fahrt mit Bus und Bahn in der Region und über 100 Freizeitangebote wie Bergbahnen, Bäder und Museen.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><strong>Hotel Tannenhof</strong> · Höhenweg 12 · 79856 Hinterzarten · info@tannenhof-demo.de</div>
+    <div>Fiktives Demo-Hotel. Konzept und KI-Agenten: <a href="https://www.linkedin.com/in/fabianschenk-ai">Fabian Schenk</a></div>
+  </div>
+</footer>
+
+<!--
+  ElevenLabs-Chat-Widget:
+  Im ElevenLabs-Dashboard beim Agenten unter "Widget" den Embed-Code kopieren
+  und hier einfügen (ersetzt diesen Kommentar). Er sieht ungefähr so aus:
+  <elevenlabs-convai agent-id="DEINE_AGENT_ID"></elevenlabs-convai>
+  <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+-->
+
+<script>
+  // Web-App-URL des Google Apps Script (nach dem Deployment eintragen). Leer = Demo-Modus.
+  const API_URL = "";
+  const API_TOKEN = "tannenhof-demo";
+
+  const ROOMS = [
+    {id:"CLASSIC", slug:"classic", name:"Doppelzimmer Classic", size:24, max:2, price:189, text:"Boxspringbett, Regendusche und Blick auf den Tannenwald. Zwei Zimmer sind barrierefrei.",
+      alt:["Doppelzimmer Classic mit Waldblick","Fensterbank mit Blick in den Wald","Bad mit Regendusche"]},
+    {id:"SUPERIOR", slug:"superior", name:"Doppelzimmer Superior", size:30, max:2, price:229, text:"Eigener Balkon mit Bergblick, Sitzecke mit Lodenstoffen, Nespresso-Maschine.",
+      alt:["Doppelzimmer Superior mit Sitzecke","Balkon mit Blick über den Schwarzwald","Sitzecke mit Kaffee"]},
+    {id:"FAMILIE", slug:"familie", name:"Familienzimmer", size:42, max:4, price:279, text:"Zwei getrennte Räume, Etagenbett für die Kinder und eine Spielkiste.",
+      alt:["Elternschlafzimmer im Familienzimmer","Kinderzimmer mit Etagenbett","Familienbad mit Doppelwaschtisch"]},
+    {id:"JUNIORSUITE", slug:"juniorsuite", name:"Junior Suite", size:45, max:3, price:319, text:"Wohnbereich mit Kachelofen und freistehender Badewanne.",
+      alt:["Wohnbereich mit Kachelofen","Freistehende Badewanne am Fenster","Schlafbereich der Junior Suite"]},
+    {id:"SUITE", slug:"suite", name:"Panorama-Suite", size:70, max:2, price:529, text:"Dachgeschoss mit eigener Infrarotsauna und Terrasse mit Blick Richtung Feldberg.",
+      alt:["Panorama-Suite mit großen Fenstern","Private Infrarotsauna","Dachterrasse bei Sonnenuntergang"]}
+  ];
+
+  const roomList = document.getElementById("roomList");
+  const catSelect = document.getElementById("cat");
+  ROOMS.forEach(r => {
+    const slides = r.alt.map((a, i) => {
+      const f = `img/zimmer-${r.slug}-${i+1}.jpg`;
+      return `<figure class="ph" data-file="${f}"><img src="${f}" alt="${a}" loading="lazy" onerror="this.remove()"></figure>`;
+    }).join("");
+    roomList.insertAdjacentHTML("beforeend", `
+      <article class="room">
+        <div class="carousel" aria-roledescription="Karussell" aria-label="Bilder ${r.name}">
+          <div class="track" tabindex="0">${slides}</div>
+          <button class="cbtn prev" type="button" aria-label="Vorheriges Bild">‹</button>
+          <button class="cbtn next" type="button" aria-label="Nächstes Bild">›</button>
+          <div class="dots" aria-hidden="true">${r.alt.map((_,i)=>`<span${i?"":' class="on"'}></span>`).join("")}</div>
+        </div>
+        <div>
+          <h3>${r.name}</h3>
+          <div class="meta">${r.size} m² · bis ${r.max} Personen</div>
+          <p>${r.text}</p>
+          <div class="price">ab ${r.price} €<small>pro Nacht</small></div>
+        </div>
+      </article>`);
+    catSelect.insertAdjacentHTML("beforeend", `<option value="${r.id}">${r.name}</option>`);
+  });
+
+  // Karussell: Pfeile, Punkte, Wischen per Scroll-Snap
+  document.querySelectorAll(".carousel").forEach(c => {
+    const track = c.querySelector(".track"), prev = c.querySelector(".prev"), next = c.querySelector(".next");
+    const dots = [...c.querySelectorAll(".dots span")];
+    const index = () => Math.round(track.scrollLeft / track.clientWidth);
+    const update = () => {
+      const i = index();
+      dots.forEach((d, k) => d.classList.toggle("on", k === i));
+      prev.disabled = i === 0; next.disabled = i === dots.length - 1;
+    };
+    prev.addEventListener("click", () => track.scrollBy({left:-track.clientWidth, behavior:"smooth"}));
+    next.addEventListener("click", () => track.scrollBy({left: track.clientWidth, behavior:"smooth"}));
+    track.addEventListener("scroll", () => requestAnimationFrame(update), {passive:true});
+    track.addEventListener("keydown", e => {
+      if (e.key === "ArrowRight") { e.preventDefault(); next.click(); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); prev.click(); }
+    });
+    update();
+  });
+
+  // Datumsfelder vorbelegen
+  const iso = d => d.toISOString().slice(0,10);
+  const today = new Date(); const t1 = new Date(today); t1.setDate(t1.getDate()+14);
+  const t2 = new Date(t1); t2.setDate(t2.getDate()+2);
+  document.getElementById("arr").value = iso(t1);
+  document.getElementById("dep").value = iso(t2);
+  document.getElementById("t_date").value = iso(t1);
+  ["arr","dep","t_date"].forEach(id => document.getElementById(id).min = iso(today));
+
+  // Uhrzeiten je Restaurant
+  const SLOTS = {
+    Belvedere:["18:00","18:30","19:00","19:30","20:00","20:30","21:00"],
+    Kaminstube:["12:00","12:30","13:00","13:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00"]
+  };
+  const venueSel = document.getElementById("t_venue"), timeSel = document.getElementById("t_time");
+  function fillSlots(){ timeSel.innerHTML = SLOTS[venueSel.value].map(s=>`<option ${s==="19:00"?"selected":""}>${s}</option>`).join(""); }
+  venueSel.addEventListener("change", fillSlots); fillSlots();
+
+  async function callApi(payload){
+    if(!API_URL) return {demo:true};
+    const res = await fetch(API_URL, {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body:JSON.stringify({...payload, token:API_TOKEN})});
+    return res.json();
+  }
+  function show(el, html){ el.innerHTML = html; el.classList.add("show"); }
+  const val = id => document.getElementById(id).value;
+
+  document.getElementById("availForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    const out = document.getElementById("availResult");
+    const payload = {action:"check_availability", check_in:val("arr"), check_out:val("dep"), guests:+val("guests"), category:val("cat")};
+    show(out, "Einen Moment, wir prüfen die Zimmer …");
+    try{
+      const r = await callApi(payload);
+      if(r.demo){ show(out, "Demo-Modus: Für eine echte Abfrage rufen Sie unseren Butler an oder fragen Sie im Chat."); return; }
+      if(!r.ok){ show(out, r.error || "Die Abfrage hat nicht geklappt. Bitte prüfen Sie die Daten."); return; }
+      const free = r.categories.filter(c => c.available > 0);
+      show(out, free.length
+        ? `<strong>${r.nights} ${r.nights===1?"Nacht":"Nächte"}:</strong><br>` + free.map(c => `${c.name}: noch ${c.available} frei, ${c.total_price} € gesamt`).join("<br>") + "<br>Buchen Sie telefonisch beim Butler oder im Chat."
+        : "Für diesen Zeitraum ist leider nichts mehr frei. Probieren Sie ein anderes Datum.");
+    }catch(err){ show(out, "Keine Verbindung zum Buchungssystem. Bitte versuchen Sie es später erneut."); }
+  });
+
+  document.getElementById("tableForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    const out = document.getElementById("tableResult");
+    const payload = {action:"book_table", restaurant:val("t_venue"), date:val("t_date"), time:val("t_time"), persons:+val("t_pers"), name:val("t_name"), phone:val("t_phone"), source:"Website"};
+    show(out, "Einen Moment …");
+    try{
+      const r = await callApi(payload);
+      if(r.demo){ show(out, `Demo-Modus: Tisch im ${payload.restaurant} am ${payload.date} um ${payload.time} Uhr für ${payload.persons} Personen erfasst.`); return; }
+      show(out, r.ok ? `Reserviert. Ihre Nummer: <strong>${r.reservation_id}</strong>` : (r.error || "Die Reservierung hat nicht geklappt."));
+    }catch(err){ show(out, "Keine Verbindung zum Reservierungssystem. Bitte rufen Sie uns an."); }
+  });
+</script>
+</body>
+</html>

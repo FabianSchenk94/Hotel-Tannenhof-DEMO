@@ -6,6 +6,8 @@
 
 > Fiktives Demo-Hotel. Kein reales Haus, keine echten Buchungen.
 
+![Die Demo-Website: Startseite, Restaurants mit Speisekarten, gesperrter Kalender und Mobilansicht mit Website-Chat](img/website-vorschau.png)
+
 Ein vollständig erfundenes 4-Sterne-Superior-Hotel im Hochschwarzwald als Spielwiese für zwei KI-Agenten:
 
 | Agent | Kanal | Aufgabe |
@@ -26,6 +28,8 @@ Beide Agenten antworten standardmäßig auf Deutsch und wechseln bei Bedarf auf 
 - **Bilder:** KI-generiert (OpenAI Images).
 
 ## So läuft eine Buchung am Telefon
+
+![Beispielgespräch einer Zimmerbuchung mit Ferdinand und die Schritte im System](img/buchungsablauf.png)
 
 1. Der Gast ruft an und nennt Anreise, Abreise und Personenzahl.
 2. Ferdinand rechnet relative Angaben wie „nächstes Wochenende“ in Daten um und ruft `zimmer_verfuegbarkeit` auf.

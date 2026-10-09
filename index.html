@@ -146,6 +146,11 @@
   .butler .wrap{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
   .butler h2{color:var(--mond)}
   .butler p{color:#BFC4C9;max-width:56ch}
+  .butler-cta{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+  .voice-btn{display:inline-flex;align-items:center;gap:10px;background:var(--messing);color:var(--nacht);border:0;padding:14px 22px;font:inherit;font-weight:600;letter-spacing:.02em;cursor:pointer;transition:background .2s}
+  .voice-btn:hover{background:#BFA265}
+  .voice-btn svg{width:18px;height:18px;flex:none}
+  .voice-note{font-size:.85rem;color:#8E96A3;margin-top:-8px}
   .phone{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.6rem);color:var(--mond);text-decoration:none;border-bottom:1px solid var(--messing);white-space:nowrap}
 
   /* FAQ */
@@ -378,11 +383,15 @@
   <section class="butler" id="butler">
     <div class="wrap">
       <div>
-        <h2>Rufen Sie unseren Butler an</h2>
-        <p>Unser digitaler Butler Ferdinand beantwortet Ihre Fragen rund um die Uhr, prüft freie Zimmer und reserviert Ihren Tisch. Auf Deutsch, Englisch und in weiteren Sprachen.</p>
+        <h2>Sprechen Sie mit unserem Butler</h2>
+        <p>Unser digitaler Butler Ferdinand beantwortet Ihre Fragen rund um die Uhr, prüft freie Zimmer und reserviert Ihren Tisch. Am Telefon oder direkt hier im Browser, auf Deutsch, Englisch und in weiteren Sprachen.</p>
       </div>
-      <!-- BUTLER_NUMMER: hier die Zadarma-Nummer eintragen -->
-      <a class="phone" id="butlerPhone" href="tel:+497610000000">0761 000 000 0</a>
+      <div class="butler-cta">
+        <!-- BUTLER_NUMMER: hier die Zadarma-Nummer eintragen -->
+        <a class="phone" id="butlerPhone" href="tel:+497610000000">0761 000 000 0</a>
+        <button class="voice-btn" type="button" data-voice><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Im Browser mit Ferdinand sprechen</button>
+        <span class="voice-note">Mikrofon erlauben · max. 5 Minuten · Demo</span>
+      </div>
     </div>
   </section>
 
@@ -440,13 +449,16 @@
     </div>
     <div class="cal-actions">
       <a class="call" id="calCall" href="tel:+497610000000">Ferdinand anrufen</a>
+      <button class="chat" type="button" data-voice>Im Browser sprechen</button>
       <button class="chat" type="button" id="calChat" hidden>Im Chat fragen</button>
     </div>
   </div>
 </dialog>
 
-<!-- ElevenLabs-Chat-Widget: Website-Chat des Hotel Tannenhof -->
-<elevenlabs-convai agent-id="agent_3101m4g9v3jxf1jamc4zskhkgang"></elevenlabs-convai>
+<!-- ElevenLabs-Chat-Widget: Website-Chat des Hotel Tannenhof (unten rechts) -->
+<elevenlabs-convai id="chatWidget" agent-id="agent_3101m4g9v3jxf1jamc4zskhkgang"></elevenlabs-convai>
+<!-- ElevenLabs-Voice-Widget: Butler Ferdinand im Browser (unten links, Platzierung in ElevenLabs eingestellt) -->
+<elevenlabs-convai id="ferdinandWidget" agent-id="agent_3501m4g7phzee0dsype7tdrgaqdc"></elevenlabs-convai>
 <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
 <script>
@@ -594,7 +606,26 @@
   // Telefonnummer und Chat-Knopf an die Butler-Sektion koppeln (eine Stelle zum Pflegen)
   document.getElementById("calCall").href = document.getElementById("butlerPhone").getAttribute("href");
   const chatBtn = document.getElementById("calChat");
-  const widget = () => document.querySelector("elevenlabs-convai");
+  const widget = () => document.getElementById("chatWidget");
+  // Sprachanruf mit Ferdinand im Browser starten: Startknopf im Widget suchen und klicken
+  function findButtons(root, out = []) {
+    root.querySelectorAll("*").forEach(el => {
+      if (el.tagName === "BUTTON") out.push(el);
+      if (el.shadowRoot) findButtons(el.shadowRoot, out);
+    });
+    return out;
+  }
+  function startVoice() {
+    if (cal.open) cal.close();
+    const w = document.getElementById("ferdinandWidget");
+    if (!w) return;
+    const root = w.shadowRoot;
+    const btns = root ? findButtons(root) : [];
+    const call = btns.find(b => /anruf|call|sprechen/i.test(b.textContent + " " + (b.getAttribute("aria-label") || "")));
+    if (call) { call.click(); return; }
+    w.scrollIntoView({behavior: "smooth", block: "end"});
+  }
+  document.querySelectorAll("[data-voice]").forEach(b => b.addEventListener("click", startVoice));
   chatBtn.addEventListener("click", () => {
     cal.close();
     const w = widget(); if (!w) return;

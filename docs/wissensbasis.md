@@ -44,7 +44,7 @@ Stornierung: kostenfrei bis 7 Tage vor Anreise, danach 80 % des Zimmerpreises.
 ### Gourmetrestaurant Belvedere
 - Feine regionale Küche mit saisonalen Menüs
 - Mittwoch bis Sonntag 18:00–22:00 Uhr, Küche bis 21:00 Uhr; Montag und Dienstag Ruhetag
-- 5-Gang-Menü 98 €, 7-Gang-Menü 128 €, Weinbegleitung ab 59 €; vegetarisches Menü auf Anfrage
+- Menü Hochschwarzwald: 5 Gänge 98 €, 7 Gänge 128 €; vegetarisches Menü „Wald & Garten“ 89 €; Herbstmenü „Goldener Oktober“ 115 € (Anfang Oktober bis Mitte November); Weinbegleitung ab 59 €. Komplette Karte siehe Dokument „Speisekarten“ und PDF auf der Website.
 - Tischreservierung empfohlen, auch für externe Gäste; Dresscode: smart casual
 
 ### Kaminstube (Schwarzwälder Klassiker)

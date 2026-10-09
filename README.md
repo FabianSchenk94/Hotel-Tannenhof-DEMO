@@ -8,12 +8,14 @@
 
 ![Die Demo-Website: Startseite, Restaurants mit Speisekarten, gesperrter Kalender und Mobilansicht mit Website-Chat](img/website-vorschau.png)
 
+**Ausprobieren:** Auf der Website unten links „Anruf starten“ oder im Abschnitt „Sprechen Sie mit unserem Butler“ klicken, Mikrofon erlauben und mit Ferdinand sprechen (Demo, max. 5 Minuten).
+
 Ein vollständig erfundenes 4-Sterne-Superior-Hotel im Hochschwarzwald als Spielwiese für zwei KI-Agenten:
 
 | Agent | Kanal | Aufgabe |
 |---|---|---|
 | **Website-Chat** | Chat-Widget auf der Website | Beantwortet Fragen zu Zimmern, Restaurants, Speisekarten, Spa und Anreise. Bucht nicht selbst, sondern verweist auf Ferdinand. |
-| **Telefon-Butler „Ferdinand“** | Telefonnummer | Beantwortet Fragen, prüft freie Zimmer und Tische, bucht Zimmer und reserviert Tische – live im Google Sheet. |
+| **Telefon-Butler „Ferdinand“** | Sprachanruf direkt im Browser (Telefonanbindung per SIP vorbereitet) | Beantwortet Fragen, prüft freie Zimmer und Tische, bucht Zimmer und reserviert Tische – live im Google Sheet. |
 
 Beide Agenten antworten standardmäßig auf Deutsch und wechseln bei Bedarf auf Englisch, Französisch, Italienisch oder Niederländisch.
 
@@ -27,11 +29,11 @@ Beide Agenten antworten standardmäßig auf Deutsch und wechseln bei Bedarf auf 
 - **Website:** statischer One-Pager (HTML, CSS, JavaScript) auf GitHub Pages. Das Tischformular schreibt direkt über Apps Script ins Sheet. Die Zimmer-Verfügbarkeit öffnet bewusst einen gesperrten Kalender und leitet zu Ferdinand weiter.
 - **Bilder:** KI-generiert (OpenAI Images).
 
-## So läuft eine Buchung am Telefon
+## So läuft eine Buchung mit Ferdinand
 
 ![Beispielgespräch einer Zimmerbuchung mit Ferdinand und die Schritte im System](img/buchungsablauf.png)
 
-1. Der Gast ruft an und nennt Anreise, Abreise und Personenzahl.
+1. Der Gast startet den Sprachanruf und nennt Anreise, Abreise und Personenzahl.
 2. Ferdinand rechnet relative Angaben wie „nächstes Wochenende“ in Daten um und ruft `zimmer_verfuegbarkeit` auf.
 3. Er nennt höchstens drei passende freie Kategorien mit Gesamtpreis.
 4. Nach Namen und Telefonnummer fasst er alles zusammen und wartet auf ein klares Ja.

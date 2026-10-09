@@ -311,14 +311,25 @@ function rand_() { return Math.random().toString(36).slice(2, 6).toUpperCase(); 
  */
 function setup() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const make = (name, head, rows) => {
+  const make = (name, head, rows, tabColor) => {
     let sh = ss.getSheetByName(name);
     if (sh) sh.clear(); else sh = ss.insertSheet(name);
-    sh.getRange(1, 1, rows.length + 1, head.length).setNumberFormat('@');
-    sh.getRange(1, 1, 1, head.length).setValues([head]).setFontWeight('bold').setBackground('#22402F').setFontColor('#FFFFFF');
+    sh.getBandings().forEach(b => b.remove());
+    const maxRows = Math.max(sh.getMaxRows(), 500);
+    if (sh.getMaxRows() < maxRows) sh.insertRowsAfter(sh.getMaxRows(), maxRows - sh.getMaxRows());
+    // Alles als Text speichern, damit Datum und Uhrzeit nicht umgewandelt werden
+    sh.getRange(1, 1, maxRows, head.length).setNumberFormat('@').setFontFamily('Arial').setFontSize(10).setVerticalAlignment('middle');
+    sh.getRange(1, 1, 1, head.length).setValues([head])
+      .setFontWeight('bold').setBackground('#22402F').setFontColor('#FFFFFF').setWrap(true);
+    sh.setRowHeight(1, 34);
     if (rows.length) sh.getRange(2, 1, rows.length, head.length).setValues(rows);
+    sh.getRange(2, 1, maxRows - 1, head.length).applyRowBanding(SpreadsheetApp.BandingTheme.LIGHT_GREY, false, false)
+      .setFirstRowColor('#FFFFFF').setSecondRowColor('#EEF0EB');
     sh.setFrozenRows(1);
     sh.autoResizeColumns(1, head.length);
+    for (let c = 1; c <= head.length; c++) sh.setColumnWidth(c, Math.max(sh.getColumnWidth(c) + 16, 90));
+    if (sh.getMaxColumns() > head.length) sh.deleteColumns(head.length + 1, sh.getMaxColumns() - head.length);
+    sh.setTabColor(tabColor);
     return sh;
   };
 
@@ -328,12 +339,12 @@ function setup() {
     ['FAMILIE', 'Familienzimmer', 42, 4, 6, 279],
     ['JUNIORSUITE', 'Junior Suite', 45, 3, 6, 319],
     ['SUITE', 'Panorama-Suite', 70, 2, 2, 529]
-  ]);
+  ], '#22402F');
 
   make(SHEET.restaurants, ['Restaurant', 'Tische pro Zeitfenster', 'Ruhetage (0=So … 6=Sa)', 'Zeitfenster'], [
     ['Belvedere', 6, '1,2', '18:00,18:30,19:00,19:30,20:00,20:30,21:00'],
     ['Kaminstube', 10, '', '12:00,12:30,13:00,13:30,18:00,18:30,19:00,19:30,20:00,20:30,21:00']
-  ]);
+  ], '#A88A4E');
 
   // Beispielbuchungen relativ zu heute, damit die Verfügbarkeit realistisch schwankt
   const base = new Date(); base.setHours(12, 0, 0, 0);
@@ -355,7 +366,7 @@ function setup() {
     }
   });
   make(SHEET.buchungen, ['Buchungs-Nr', 'Erstellt', 'Kategorie-ID', 'Kategorie', 'Anreise', 'Abreise', 'Nächte', 'Personen',
-    'Name', 'Telefon', 'E-Mail', 'Gesamtpreis (€)', 'Quelle', 'Status'], bRows);
+    'Name', 'Telefon', 'E-Mail', 'Gesamtpreis (€)', 'Quelle', 'Status'], bRows, '#7D8C55');
 
   const tRows = [];
   for (let n = 0; n < 14; n++) {
@@ -366,10 +377,16 @@ function setup() {
     }
     tRows.push(['T-DEMO-K' + n, day(-3), 'Kaminstube', fmtDate_(d), '18:30', 4, namen[n % namen.length], '', 'Demo-Daten', 'Bestätigt']);
   }
-  make(SHEET.tische, ['Res-Nr', 'Erstellt', 'Restaurant', 'Datum', 'Uhrzeit', 'Personen', 'Name', 'Telefon', 'Quelle', 'Status'], tRows);
+  make(SHEET.tische, ['Res-Nr', 'Erstellt', 'Restaurant', 'Datum', 'Uhrzeit', 'Personen', 'Name', 'Telefon', 'Quelle', 'Status'], tRows, '#16213A');
 
-  const first = ss.getSheets()[0];
-  if (Object.values(SHEET).indexOf(first.getName()) < 0 && first.getLastRow() === 0) ss.deleteSheet(first);
+  // Reihenfolge der Reiter festlegen und leeres Startblatt entfernen
+  [SHEET.zimmer, SHEET.buchungen, SHEET.restaurants, SHEET.tische].forEach((n, i) => {
+    ss.setActiveSheet(ss.getSheetByName(n)); ss.moveActiveSheet(i + 1);
+  });
+  ss.getSheets().forEach(sh => {
+    if (Object.values(SHEET).indexOf(sh.getName()) < 0 && sh.getLastRow() === 0) ss.deleteSheet(sh);
+  });
+  ss.setActiveSheet(ss.getSheetByName(SHEET.buchungen));
 }
 
 /** Schnelltest im Editor: Ergebnis erscheint im Ausführungsprotokoll. */

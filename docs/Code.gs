@@ -1,3 +1,4 @@
+/** @OnlyCurrentDoc */
 /**
  * Hotel Tannenhof Hinterzarten – Buchungs-Backend (Google Apps Script)
  * --------------------------------------------------------

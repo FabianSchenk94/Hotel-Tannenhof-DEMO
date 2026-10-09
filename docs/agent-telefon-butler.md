@@ -1,6 +1,6 @@
 # Agent 1 – Telefon-Butler (ElevenLabs Voice Agent)
 
-> Web-App-URL des Apps Script dort eintragen, wo `DEINE_WEBAPP_URL` steht.
+> Web-App-URL des Tannenhof-Backends ist bereits eingetragen.
 
 ---
 
@@ -97,7 +97,7 @@ Wenn alles erledigt ist, frag einmal, ob du noch etwas tun kannst. Verabschiede 
 ## 3. Tools (Typ: Webhook, Methode GET)
 
 Bei allen vier Tools:
-- **URL:** `DEINE_WEBAPP_URL` (endet auf `/exec`)
+- **URL:** `https://script.google.com/macros/s/AKfycbyHMaUeg1fKzULLbWwsJQyKI2qJq_tT5oe9uoLVkPyF891uvJODKwIpr1wgBXh8VRH7/exec` (endet auf `/exec`)
 - **Query-Parameter** `token`: Typ *Konstante*, Wert `tannenhof-demo`
 - **Query-Parameter** `action`: Typ *Konstante*, Wert siehe unten
 - Alle anderen Parameter: Typ *LLM*, Beschreibung wie angegeben

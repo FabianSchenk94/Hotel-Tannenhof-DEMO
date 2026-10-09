@@ -11,10 +11,11 @@
 | Agent-Name | Tannenhof Telefon-Butler |
 | Sprache (Standard) | Deutsch |
 | Weitere Sprachen | Englisch, Französisch, Italienisch, Niederländisch |
-| LLM | Gemini 2.5 Flash (schnell, günstig) – alternativ GPT-4.1 mini |
+| LLM | DeepSeek Flash 4.1 (ruft die Tools zuverlässig auf) |
 | Temperatur | 0,3 |
 | Stimme | ruhige, warme deutsche Männerstimme, eher tief, nicht zu schnell |
-| Knowledge Base | `wissensbasis.md` hochladen, RAG aktivieren |
+| Knowledge Base | `wissensbasis.md`, `Belvedere-Speisekarte-Butler.md`, `Kaminstube-Speisekarte-Butler.md` hochladen, RAG aktivieren |
+| Aussprache | `Tannenhof-Zimmer.pls` und `Tannenhof-Aussprache-Alias.pls` in den Voice Settings hinterlegen |
 | Systemtools | `end_call` und `language_detection` aktivieren |
 | Max. Gesprächsdauer | 600 Sekunden |
 

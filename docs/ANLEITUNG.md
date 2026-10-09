@@ -5,9 +5,9 @@ JavaScript, das direkt in deinem Google-Konto läuft und mit Google Sheets verbu
 Als **Web-App** veröffentlicht, bekommt das Script eine eigene URL. Ruft jemand diese URL auf (ElevenLabs-Agent oder Website), liest bzw. schreibt das Script im Sheet und antwortet mit JSON.
 
 ```
-Anrufer → Zadarma-Nummer → ElevenLabs-Agent ──(Webhook-Tool)──► Apps-Script-URL ──► Google Sheet
-Website-Chat → ElevenLabs-Agent ──────────────(Webhook-Tool)──►        "
-Website-Formular ─────────────────────────────(fetch)─────────►        "
+Anrufer → Zadarma-Nummer → Telefon-Butler (ElevenLabs) ──(Webhook-Tools)──► Apps-Script-URL ──► Google Sheet
+Website-Tischformular ─────────────────────────────(fetch)──────────►        "
+Website-Chat (ElevenLabs) → nur Wissensbasis, keine Tools – verweist für Buchungen auf den Telefon-Butler
 ```
 
 ## 1. Sheet + Script anlegen (ca. 10 Min.)
@@ -29,9 +29,9 @@ Wichtig: Nach jeder Code-Änderung **Bereitstellungen verwalten → Bearbeiten �
 Token ändern? In `Code.gs` (`TOKEN`), auf der Website (`API_TOKEN`) und in den ElevenLabs-Tools gleich setzen.
 
 ## 3. Website anbinden
-In `index.html` ganz unten `const API_URL = "";` → Web-App-URL eintragen. Dann schreiben das Tischformular und die Verfügbarkeitsabfrage ins Sheet.
+In `index.html` ganz unten `const API_URL = "";` → Web-App-URL eintragen. Dann schreibt das Tischformular direkt ins Sheet. Die Verfügbarkeitsabfrage für Zimmer öffnet bewusst einen gesperrten Kalender und verweist auf Ferdinand (Telefon oder Chat).
 
-## 4. ElevenLabs-Tools (Webhook, Methode GET)
+## 4. ElevenLabs-Tools (nur Telefon-Butler; Webhook, Methode GET)
 Pro Tool dieselbe URL, Query-Parameter: `token` (konstant `tannenhof-demo`), `action` (konstant) plus:
 
 | Tool | action | Parameter, die der Agent füllt |
@@ -56,4 +56,4 @@ Twilio vergibt deutsche Ortsnummern nur an Firmen. Zadarma vergibt sie an Privat
 ## 6. Website veröffentlichen (GitHub Pages)
 1. Neues öffentliches Repository, z. B. `hotel-tannenhof`, `index.html` und den Ordner `img/` mit den 24 Bildern hochladen (Dateinamen siehe `Tannenhof_Bild-Prompts.pdf`).
 2. **Settings → Pages → Branch: main / root** → nach 1–2 Minuten erreichbar unter `https://fabianschenk94.github.io/hotel-tannenhof/`.
-3. ElevenLabs-Widget: beim Chat-Agenten unter **Widget** den Embed-Code kopieren, unten in `index.html` an der markierten Stelle einfügen. Die Domain `fabianschenk94.github.io` in ElevenLabs als erlaubte Domain eintragen.
+3. ElevenLabs-Widget: beim Chat-Agenten unter **Deploy → Channels → Widget** den Embed-Code kopieren (dort auch Avatar, Farben und Texte), unten in `index.html` an der markierten Stelle einfügen. Die Domain `fabianschenk94.github.io` in ElevenLabs als erlaubte Domain eintragen.

@@ -13,9 +13,9 @@
 | Modus | **Nur Text** (Chat-only / Text-only aktivieren) |
 | Sprache (Standard) | Deutsch |
 | Weitere Sprachen | Englisch, Französisch, Italienisch, Niederländisch |
-| LLM | Gemini 2.5 Flash |
+| LLM | DeepSeek Flash 4.1 |
 | Temperatur | 0,3 |
-| Knowledge Base | `wissensbasis.md` (dieselbe Datei wie beim Butler) |
+| Knowledge Base | `wissensbasis.md` (wie beim Butler) und `speisekarten.md` |
 | Widget | Textmodus, Position unten rechts, Farbe `#22402F` |
 | Erlaubte Domain | `fabianschenk94.github.io` |
 

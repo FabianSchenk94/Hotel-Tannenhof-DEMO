@@ -1,0 +1,130 @@
+{
+  "projekt": "Hotel Tannenhof Hinterzarten – Bilder für die Demo-Website",
+  "ordner": "img",
+  "format": "jpg",
+  "groesse": "1536x1024",
+  "qualitaet": "high",
+  "stil": "One single photograph filling the whole frame – not a collage, no grid, no split panels, no borders. Photorealistic high-end hotel photography for a four-star superior hotel in the Black Forest, Germany. Shot on a full-frame camera, natural soft light, true-to-life colors, subtle depth of field. Architecture: traditional Black Forest chalet style with dark-stained spruce wood facade, white plaster ground floor, deep overhanging roof with wooden shingles, wooden balconies with flower boxes, surrounded by tall fir trees. Interiors: modern alpine luxury with light oak and dark spruce wood, loden fabrics in forest green and warm grey, brass details, natural stone, linen. No text, no lettering, no logos, no signs, no watermarks. No people, or at most distant figures from behind.",
+  "bilder": [
+    {
+      "datei": "hero-blaue-stunde.jpg",
+      "bereich": "Header",
+      "prompt": "Wide exterior shot of a 40-room Black Forest chalet hotel at blue hour in late autumn. Warm golden light glows from many windows, soft mist drifts between dark fir trees, deep blue sky with the first stars, a gravel forest path leading towards the house in the foreground. Camera slightly below eye level. Keep the left third of the image calm and dark (sky and trees) so a headline can sit on top."
+    },
+    {
+      "datei": "hotel-sommer.jpg",
+      "bereich": "Das Haus",
+      "prompt": "The same Black Forest chalet hotel on a sunny summer morning. Meadow with wildflowers in front, hiking path along the meadow, wooden sun terrace with a few empty loungers and parasols, fir forest and rolling hills behind, light clouds in a blue sky."
+    },
+    {
+      "datei": "lounge-kamin.jpg",
+      "bereich": "Das Haus",
+      "prompt": "Hotel lobby lounge in the evening with a large open fireplace made of natural stone, fire burning. Cognac leather armchairs, sofas with forest-green loden cushions, a thick wool rug, low oak tables with candles, high wooden beam ceiling, large windows showing dark fir trees outside."
+    },
+    {
+      "datei": "spa-pool.jpg",
+      "bereich": "Spa",
+      "prompt": "Hotel spa with an indoor pool that continues outside through a glass wall into a heated outdoor pool. Steam rises from the water, fir forest right behind the outdoor pool, dusk with warm lights reflecting on the water, natural stone walls, wooden loungers with white towels."
+    },
+    {
+      "datei": "zimmer-classic-1.jpg",
+      "bereich": "Doppelzimmer Classic",
+      "prompt": "Double room of 24 m² in the Black Forest hotel: boxspring double bed with white linen and a forest-green loden throw, light oak headboard wall, a small armchair, large window with a view of tall fir trees, soft daylight."
+    },
+    {
+      "datei": "zimmer-classic-2.jpg",
+      "bereich": "Doppelzimmer Classic",
+      "prompt": "Detail of a cozy window seat in a hotel double room: wide wooden window bench with loden cushions, a knitted blanket and a book, view through the window into a fir forest in morning light."
+    },
+    {
+      "datei": "zimmer-classic-3.jpg",
+      "bereich": "Doppelzimmer Classic",
+      "prompt": "Modern hotel bathroom with a walk-in rain shower behind clear glass, dark slate tiles combined with light oak, a floating wooden vanity with a stone washbasin, folded white towels, warm indirect light."
+    },
+    {
+      "datei": "zimmer-superior-1.jpg",
+      "bereich": "Doppelzimmer Superior",
+      "prompt": "Superior double room of 30 m² in the Black Forest hotel: king-size bed, seating corner with two loden armchairs and a small round oak table, glass door open to a wooden balcony, mountain view, afternoon light."
+    },
+    {
+      "datei": "zimmer-superior-2.jpg",
+      "bereich": "Doppelzimmer Superior",
+      "prompt": "Wooden hotel balcony with two chairs and a small table with two cups of coffee, red geraniums in flower boxes, view over rolling Black Forest hills and fir forests in soft morning mist."
+    },
+    {
+      "datei": "zimmer-superior-3.jpg",
+      "bereich": "Doppelzimmer Superior",
+      "prompt": "Close-up of a seating corner in a luxury alpine hotel room: forest-green loden armchair, brass floor lamp, small oak side table with a coffee machine tray and two cups, wooden wall paneling, warm evening light."
+    },
+    {
+      "datei": "zimmer-familie-1.jpg",
+      "bereich": "Familienzimmer",
+      "prompt": "Parents' bedroom of a family room in the Black Forest hotel: double bed, open double door leading to a second, separate children's room, light oak and warm grey textiles, bright daylight."
+    },
+    {
+      "datei": "zimmer-familie-2.jpg",
+      "bereich": "Familienzimmer",
+      "prompt": "Children's room in a family hotel room: solid wood bunk bed with checkered bedding, a wooden toy chest, a small reading corner with cushions, wooden animal figures on a shelf, window with fir trees outside, cheerful but calm."
+    },
+    {
+      "datei": "zimmer-familie-3.jpg",
+      "bereich": "Familienzimmer",
+      "prompt": "Spacious family hotel bathroom with a double washbasin in natural stone, a bathtub with shower, a wooden step stool for children, warm light, towels in white and forest green."
+    },
+    {
+      "datei": "zimmer-juniorsuite-1.jpg",
+      "bereich": "Junior Suite",
+      "prompt": "Living area of a 45 m² junior suite: traditional green ceramic tiled stove (Kachelofen) with a wooden bench around it, a sofa with loden cushions, oak floor, large window to the forest, evening light with the stove glowing warmly."
+    },
+    {
+      "datei": "zimmer-juniorsuite-2.jpg",
+      "bereich": "Junior Suite",
+      "prompt": "Freestanding white bathtub in front of a large window with a view of snowy fir trees, natural stone floor, wooden stool with folded towels and a candle, soft winter daylight."
+    },
+    {
+      "datei": "zimmer-juniorsuite-3.jpg",
+      "bereich": "Junior Suite",
+      "prompt": "Bedroom of a junior suite: king-size bed with an upholstered loden headboard, wooden ceiling beams, bedside brass lamps, a wool rug, view through an open sliding door into the living area."
+    },
+    {
+      "datei": "zimmer-suite-1.jpg",
+      "bereich": "Panorama-Suite",
+      "prompt": "70 m² top-floor panorama suite: sloped wooden ceiling, floor-to-ceiling panorama windows with a wide view over the Black Forest towards distant mountains, a lounge area with a large sofa and the bed area behind, golden late-afternoon light."
+    },
+    {
+      "datei": "zimmer-suite-2.jpg",
+      "bereich": "Panorama-Suite",
+      "prompt": "Private infrared sauna cabin made of light spruce inside a luxury hotel suite, glass front, two towels, a small window with a forest view, warm ambient light."
+    },
+    {
+      "datei": "zimmer-suite-3.jpg",
+      "bereich": "Panorama-Suite",
+      "prompt": "Private roof terrace of a hotel suite at sunset: two wooden loungers with grey cushions, a small table with two glasses of white wine, wooden railing, wide view over layered Black Forest hills in orange and blue evening light."
+    },
+    {
+      "datei": "belvedere-raum.jpg",
+      "bereich": "Gourmetrestaurant Belvedere",
+      "prompt": "Elegant fine dining restaurant in the Black Forest hotel in the evening: only a few tables with white tablecloths, fine glassware and candlelight, dark wood paneling with brass accents, a large window showing the fir forest at blue hour, calm and exclusive atmosphere, no guests."
+    },
+    {
+      "datei": "belvedere-gericht.jpg",
+      "bereich": "Gourmetrestaurant Belvedere",
+      "prompt": "Fine dining dish on a handmade dark ceramic plate: rosé-roasted venison loin with celeriac purée, glazed baby carrots, blackberries and a dark jus, garnished with herbs, on a white tablecloth, shot at 45 degrees, shallow depth of field, candlelight."
+    },
+    {
+      "datei": "kaminstube-raum.jpg",
+      "bereich": "Kaminstube",
+      "prompt": "Cozy traditional Black Forest parlour (Stube) restaurant: wood-paneled walls and ceiling, a green tiled stove with a wooden bench, rustic wooden tables set for dinner with red-and-white checkered cushions on the benches, warm evening light, no guests."
+    },
+    {
+      "datei": "kaminstube-gericht.jpg",
+      "bereich": "Kaminstube",
+      "prompt": "Rustic regional dish: pan-fried Black Forest trout fillet with brown butter and roasted almonds, parsley potatoes and a small green salad, on a simple stoneware plate on a wooden table, a glass of white wine next to it, natural window light."
+    },
+    {
+      "datei": "fruehstueck-wintergarten.jpg",
+      "bereich": "Das Haus",
+      "prompt": "Breakfast buffet in a bright glass conservatory (winter garden) of the hotel in the morning: regional cheeses, farmhouse bread, homemade jams in jars, honeycomb, fresh fruit, a wooden table with a linen tablecloth, view through the glass onto a sunny meadow and fir forest."
+    }
+  ]
+}

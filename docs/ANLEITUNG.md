@@ -16,23 +16,28 @@ optional: Telefonnummer (SIP) → derselbe Agent
 3. **Projekteinstellungen** (Zahnrad): Zeitzone auf `(GMT+01:00) Berlin` stellen.
 4. Im Editor oben die Funktion **`setup`** auswählen → **Ausführen**. Beim ersten Mal Zugriff erlauben („Erweitert → Zu … wechseln“).
    Danach gibt es vier Blätter: `Zimmer`, `Restaurants`, `Zimmerbuchungen` (mit Demo-Buchungen), `Tischreservierungen`.
-5. Optional `testLokal` ausführen → Ergebnis unter **Ausführungsprotokoll**.
+5. Funktion **`installTriggers`** einmal ausführen: Ab dann erneuert `rollDemoData` jede Nacht um 3 Uhr die Demo-Belegung und löscht Gast-Buchungen 14 Tage nach dem Termin.
+6. **Projekteinstellungen → Skripteigenschaften → Eigenschaft hinzufügen:** `AGENT_TOKEN` mit einem langen Zufallswert (mind. 20 Zeichen). Diesen Wert nur in den ElevenLabs-Tools eintragen, nie auf der Website oder im Repository.
+7. Optional `testLokal` ausführen → Ergebnis unter **Ausführungsprotokoll**.
 
 ## 2. Als Web-App veröffentlichen
 1. **Bereitstellen → Neue Bereitstellung → Typ: Web-App**
 2. Ausführen als: **Ich** · Zugriff: **Jeder**
 3. URL kopieren (endet auf `/exec`).
-4. Test im Browser:
-   `DEINE_URL?token=tannenhof-demo&action=check_availability&check_in=2026-11-06&check_out=2026-11-08`
+4. Test im Browser (öffentlicher Schlüssel, nur Tische):
+   `DEINE_URL?token=tannenhof-demo&action=check_table&restaurant=Kaminstube&date=2026-11-06&persons=2`
 
 Wichtig: Nach jeder Code-Änderung **Bereitstellungen verwalten → Bearbeiten → Version: Neu**, sonst läuft die alte Version weiter.
-Token ändern? In `Code.gs` (`TOKEN`), auf der Website (`API_TOKEN`) und in den ElevenLabs-Tools gleich setzen.
+Zwei Schlüssel:
+- `WEB_TOKEN` (in `Code.gs` und als `API_TOKEN` in `index.html`) ist öffentlich und erlaubt nur `check_table`, `book_table` und `info`. Die Quelle wird dabei immer auf „Website“ gesetzt.
+- `AGENT_TOKEN` (Skripteigenschaft) ist geheim und erlaubt alle Aktionen. Nur in den ElevenLabs-Tools hinterlegt.
+Buchungen sind pro Stunde begrenzt (`LIMITS` in `Code.gs`), doppelte Buchungen innerhalb von 15 Minuten werden erkannt.
 
 ## 3. Website anbinden
 In `index.html` ganz unten `const API_URL = "";` → Web-App-URL eintragen. Dann schreibt das Tischformular direkt ins Sheet. Die Verfügbarkeitsabfrage für Zimmer öffnet bewusst einen gesperrten Kalender und verweist auf Ferdinand (Telefon oder Chat).
 
-## 4. ElevenLabs-Tools (nur Telefon-Butler; Webhook, Methode GET)
-Pro Tool dieselbe URL, Query-Parameter: `token` (konstant `tannenhof-demo`), `action` (konstant) plus:
+## 4. ElevenLabs-Tools (Ferdinand; Webhook, Methode POST, JSON-Body)
+Pro Tool dieselbe URL, Body-Parameter: `token` (konstant, Wert = `AGENT_TOKEN`), `action` (konstant), `source` (`Ferdinand Chat` oder `Ferdinand Sprache`) plus:
 
 | Tool | action | Parameter, die der Agent füllt |
 |---|---|---|
@@ -42,7 +47,7 @@ Pro Tool dieselbe URL, Query-Parameter: `token` (konstant `tannenhof-demo`), `ac
 | `tisch_reservieren` | book_table | restaurant, date, time, persons, name, phone |
 
 Beim Parameter-Beschreiben im Tool: Datum immer `JJJJ-MM-TT`, Uhrzeit `HH:MM`. Jede Antwort enthält `heute` und `wochentag_heute`, damit der Agent „morgen“ oder „nächsten Freitag“ korrekt umrechnet.
-Für `phone` beim Telefon-Agent die Anrufernummer als dynamische Variable vorschlagen und nur bestätigen lassen.
+Für `phone` am Telefon die Anrufernummer vorschlagen und nur bestätigen lassen; im Website-Chat und -Sprachanruf gibt es keine Anrufernummer.
 
 ## 5. Deutsche Telefonnummer über Zadarma
 Twilio vergibt deutsche Ortsnummern nur an Firmen. Zadarma vergibt sie an Privatpersonen.

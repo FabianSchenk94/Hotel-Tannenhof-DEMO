@@ -1,6 +1,6 @@
 # Hotel Tannenhof Hinterzarten ★★★★ Superior – Wissensbasis
 
-> Fiktives Demo-Hotel. Diese Datei ist die einzige Quelle für Website, Website-Chat und Telefon-Butler.
+> Fiktives Demo-Hotel. Diese Datei ist die Wissensbasis von Butler Ferdinand (Chat und Sprache) und Grundlage der Website.
 > In ElevenLabs als Knowledge Base hochladen.
 
 ## Das Hotel
@@ -13,8 +13,7 @@
 - Haustiere: Hunde bis mittlere Größe willkommen, 25 € pro Nacht inkl. Decke und Napf, nicht im Spa und im Gourmetrestaurant Belvedere
 - Check-in ab 15:00 Uhr, Check-out bis 11:00 Uhr; Late Check-out bis 14:00 Uhr für 40 € (nach Verfügbarkeit)
 - Rezeption: 24 Stunden besetzt
-- Telefon: wird durch die Butler-Nummer ersetzt
-- E-Mail: info@tannenhof-demo.de
+- E-Mail: info@tannenhof-demo.de (Platzhalter, in dieser Demo nicht erreichbar)
 - WLAN: im ganzen Haus kostenlos
 - Hochschwarzwald Card: inklusive ab 2 Nächten – freie Nutzung von Bus und Bahn sowie über 100 Freizeitangeboten in der Region
 - Barrierefreiheit: Aufzug in allen Etagen, 2 barrierefreie Zimmer (Kategorie Doppelzimmer Classic)

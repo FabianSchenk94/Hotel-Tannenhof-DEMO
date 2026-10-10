@@ -5,12 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hotel Tannenhof Hinterzarten – Wald & Spa Hotel im Hochschwarzwald</title>
 <meta name="description" content="Hotel Tannenhof Hinterzarten ★★★★S – Wald & Spa Hotel im Hochschwarzwald. Fiktives Demo-Hotel für KI-Agenten.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://fabianschenk94.github.io/Hotel-Tannenhof-DEMO/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Hotel Tannenhof – KI-Agenten-Demo">
+<meta property="og:title" content="Hotel Tannenhof Hinterzarten – KI-Butler Ferdinand (Demo)">
+<meta property="og:description" content="Fiktives Schwarzwald-Hotel mit KI-Butler Ferdinand: schreibt, spricht und bucht live im Browser. Demo von Fabian Schenk.">
+<meta property="og:url" content="https://fabianschenk94.github.io/Hotel-Tannenhof-DEMO/">
+<meta property="og:image" content="https://fabianschenk94.github.io/Hotel-Tannenhof-DEMO/img/hero-blaue-stunde.jpg">
+<meta property="og:image:width" content="1536">
+<meta property="og:image:height" content="1024">
+<meta property="og:image:alt" content="Hotel Tannenhof zur blauen Stunde im Schwarzwald">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hotel Tannenhof Hinterzarten – KI-Butler Ferdinand (Demo)">
+<meta name="twitter:description" content="Fiktives Schwarzwald-Hotel mit KI-Butler Ferdinand: schreibt, spricht und bucht live im Browser.">
+<meta name="twitter:image" content="https://fabianschenk94.github.io/Hotel-Tannenhof-DEMO/img/hero-blaue-stunde.jpg">
+<link rel="preload" as="font" type="font/woff2" href="fonts/figtree-latin-400-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/marcellus-latin-400-normal.woff2" crossorigin>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 4 L46 56 H18 Z' fill='%2322402F'/%3E%3C/svg%3E">
-<link rel="preload" as="image" href="img/hero-blaue-stunde.jpg">
+<link rel="preload" as="image" href="img/hero-blaue-stunde.webp">
 <style>
+  /* Schriften lokal eingebunden (keine Verbindung zu Google-Servern), Lizenz: SIL OFL, siehe fonts/ */
+  @font-face{font-family:"Marcellus";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/marcellus-latin-400-normal.woff2) format("woff2")}
+  @font-face{font-family:"Figtree";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/figtree-latin-400-normal.woff2) format("woff2")}
+  @font-face{font-family:"Figtree";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/figtree-latin-500-normal.woff2) format("woff2")}
+  @font-face{font-family:"Figtree";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/figtree-latin-600-normal.woff2) format("woff2")}
   :root{
     --nacht:#16213A;      /* Nachthimmel */
     --tanne:#22402F;      /* Tannengrün */
@@ -131,6 +151,8 @@
   .reserve select option{color:var(--tinte)}
   .reserve .btn{margin-top:20px}
   .reserve .result{color:var(--tinte)}
+  .reserve .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .reserve .form-note{margin-top:16px;font-size:.8rem;line-height:1.5;color:#AEB6A6;max-width:70ch}
 
   /* Spa & Lage */
   .two{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:64px;align-items:start}
@@ -255,8 +277,8 @@
 
 <main id="top">
   <section class="hero" aria-label="Willkommen">
-    <figure class="ph" data-file="img/hero-blaue-stunde.jpg">
-      <img src="img/hero-blaue-stunde.jpg" alt="Das Hotel Tannenhof zur blauen Stunde zwischen Tannen" onerror="this.remove()">
+    <figure class="ph" data-file="img/hero-blaue-stunde.webp">
+      <img src="img/hero-blaue-stunde.webp" alt="Das Hotel Tannenhof zur blauen Stunde zwischen Tannen" onerror="this.remove()">
     </figure>
     <div class="wrap hero-text">
       <p class="stars" aria-label="4 Sterne Superior">★★★★ S</p>
@@ -291,9 +313,9 @@
       <h2>Das Haus</h2>
       <p class="lead">Ein Schwarzwaldhaus mit 40 Zimmern, Kaminlounge und einem Wintergarten, in dem morgens die Sonne über die Wiese kommt.</p>
       <div class="mosaic">
-        <figure class="ph" data-file="img/hotel-sommer.jpg"><img src="img/hotel-sommer.jpg" alt="Das Hotel im Sommer mit Blumenwiese" loading="lazy" onerror="this.remove()"><figcaption>Sommer am Tannenhof</figcaption></figure>
-        <figure class="ph" data-file="img/lounge-kamin.jpg"><img src="img/lounge-kamin.jpg" alt="Kaminlounge mit offenem Feuer" loading="lazy" onerror="this.remove()"><figcaption>Kaminlounge</figcaption></figure>
-        <figure class="ph" data-file="img/fruehstueck-wintergarten.jpg"><img src="img/fruehstueck-wintergarten.jpg" alt="Frühstücksbuffet im Wintergarten" loading="lazy" onerror="this.remove()"><figcaption>Frühstück im Wintergarten</figcaption></figure>
+        <figure class="ph" data-file="img/hotel-sommer.webp"><img src="img/hotel-sommer.webp" alt="Das Hotel im Sommer mit Blumenwiese" loading="lazy" onerror="this.remove()"><figcaption>Sommer am Tannenhof</figcaption></figure>
+        <figure class="ph" data-file="img/lounge-kamin.webp"><img src="img/lounge-kamin.webp" alt="Kaminlounge mit offenem Feuer" loading="lazy" onerror="this.remove()"><figcaption>Kaminlounge</figcaption></figure>
+        <figure class="ph" data-file="img/fruehstueck-wintergarten.webp"><img src="img/fruehstueck-wintergarten.webp" alt="Frühstücksbuffet im Wintergarten" loading="lazy" onerror="this.remove()"><figcaption>Frühstück im Wintergarten</figcaption></figure>
       </div>
     </div>
   </section>
@@ -305,8 +327,8 @@
       <div class="venues">
         <div class="venue">
           <div class="pair">
-            <figure class="ph" data-file="img/belvedere-raum.jpg"><img src="img/belvedere-raum.jpg" alt="Gourmetrestaurant Belvedere am Abend" loading="lazy" onerror="this.remove()"></figure>
-            <figure class="ph" data-file="img/belvedere-gericht.jpg"><img src="img/belvedere-gericht.jpg" alt="Rehrücken mit Sellerie und Brombeeren" loading="lazy" onerror="this.remove()"></figure>
+            <figure class="ph" data-file="img/belvedere-raum.webp"><img src="img/belvedere-raum.webp" alt="Gourmetrestaurant Belvedere am Abend" loading="lazy" onerror="this.remove()"></figure>
+            <figure class="ph" data-file="img/belvedere-gericht.webp"><img src="img/belvedere-gericht.webp" alt="Rehrücken mit Sellerie und Brombeeren" loading="lazy" onerror="this.remove()"></figure>
           </div>
           <h3>Gourmetrestaurant Belvedere</h3>
           <p>Feine regionale Küche mit saisonalen Menüs. Menü Hochschwarzwald 98&nbsp;€ (5&nbsp;Gänge) oder 128&nbsp;€ (7&nbsp;Gänge), vegetarisches Menü Wald &amp; Garten 89&nbsp;€, Weinbegleitung ab 59&nbsp;€. Im Herbst: Menü „Goldener Oktober“ für 115&nbsp;€.</p>
@@ -319,8 +341,8 @@
         </div>
         <div class="venue">
           <div class="pair">
-            <figure class="ph" data-file="img/kaminstube-raum.jpg"><img src="img/kaminstube-raum.jpg" alt="Kaminstube mit Kachelofen" loading="lazy" onerror="this.remove()"></figure>
-            <figure class="ph" data-file="img/kaminstube-gericht.jpg"><img src="img/kaminstube-gericht.jpg" alt="Schwarzwaldforelle mit Mandelbutter" loading="lazy" onerror="this.remove()"></figure>
+            <figure class="ph" data-file="img/kaminstube-raum.webp"><img src="img/kaminstube-raum.webp" alt="Kaminstube mit Kachelofen" loading="lazy" onerror="this.remove()"></figure>
+            <figure class="ph" data-file="img/kaminstube-gericht.webp"><img src="img/kaminstube-gericht.webp" alt="Schwarzwaldforelle mit Mandelbutter" loading="lazy" onerror="this.remove()"></figure>
           </div>
           <h3>Kaminstube</h3>
           <p>Schwarzwälder Klassiker am Kachelofen: Wurstsalat, Schnitzel, Schäufele mit Brägele, Kässpätzle und Kirschtorte, dazu eine Kinderkarte. Im Herbst mit Rehragout und Zwetschgenkuchen.</p>
@@ -342,10 +364,12 @@
           <label>Datum<input id="t_date" type="date" required></label>
           <label>Uhrzeit
             <select id="t_time"></select></label>
-          <label>Personen<input id="t_pers" type="number" min="1" max="10" value="2" required></label>
-          <label>Name<input id="t_name" type="text" autocomplete="name" required></label>
-          <label>Telefon<input id="t_phone" type="tel" autocomplete="tel"></label>
+          <label>Personen<input id="t_pers" type="number" min="1" max="12" value="2" required></label>
+          <label>Name<input id="t_name" type="text" autocomplete="name" minlength="2" maxlength="80" required></label>
+          <label>Telefon<input id="t_phone" type="tel" autocomplete="tel" maxlength="30" pattern="[+0-9 ()/.\-]{6,30}" title="Bitte eine Telefonnummer angeben, z. B. +49 761 123456" required></label>
+          <label class="hp" aria-hidden="true">Firma<input id="t_company" type="text" tabindex="-1" autocomplete="off"></label>
         </div>
+        <p class="form-note">Demo: Die Reservierung landet in einem Google Sheet des Demo-Projekts, ein echter Tisch wird nicht reserviert. Name und Telefonnummer werden 14 Tage nach dem Termin automatisch gelöscht. Bitte keine echten Daten Dritter eingeben.</p>
         <button class="btn light" type="submit">Tisch reservieren</button>
         <div class="result" id="tableResult" role="status" aria-live="polite"></div>
       </form>
@@ -355,7 +379,7 @@
   <section id="spa">
     <div class="wrap two">
       <div>
-        <figure class="ph spa-img" data-file="img/spa-pool.jpg"><img src="img/spa-pool.jpg" alt="Innen- und Außenpool im Tannenhof Spa" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="ph spa-img" data-file="img/spa-pool.webp"><img src="img/spa-pool.webp" alt="Innen- und Außenpool im Tannenhof Spa" loading="lazy" onerror="this.remove()"></figure>
         <h2>Tannenhof Spa</h2>
         <p class="lead">1.200 m² mit Innen- und Außenpool bei 32 °C, finnischer Sauna, Bio-Sauna, Dampfbad und einem Ruheraum, der direkt in den Wald schaut.</p>
         <ul class="facts">
@@ -411,8 +435,9 @@
 
 <footer>
   <div class="wrap">
-    <div><strong>Hotel Tannenhof</strong> · Höhenweg 12 · 79856 Hinterzarten · info@tannenhof-demo.de</div>
+    <div><strong>Hotel Tannenhof</strong> · Höhenweg 12 · 79856 Hinterzarten · info@tannenhof-demo.de <span style="opacity:.75">(Platzhalter, keine echte E-Mail-Adresse)</span></div>
     <div>Fiktives Demo-Hotel. Konzept und KI-Agenten: <a href="https://www.linkedin.com/in/fabianschenk-ai">Fabian Schenk</a></div>
+    <div style="opacity:.75;font-size:.85em;margin-top:6px">Gespräche mit Ferdinand laufen über ElevenLabs, das Tischformular über Google Apps Script. Gesprächsverläufe werden 30 Tage gespeichert, Audio wird nicht aufbewahrt.</div>
   </div>
 </footer>
 
@@ -454,10 +479,11 @@
 
 <!-- ElevenLabs-Widget: Butler Ferdinand – Chat und Sprachanruf in einem (unten rechts) -->
 <elevenlabs-convai id="ferdinandWidget" agent-id="agent_3501m4g7phzee0dsype7tdrgaqdc"></elevenlabs-convai>
-<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed@0.19.0" async type="text/javascript"></script>
 
 <script>
   // Web-App-URL des Google Apps Script (nach dem Deployment eintragen). Leer = Demo-Modus.
+  // Der Token ist absichtlich öffentlich: Er erlaubt nur Tisch prüfen und reservieren (Limit pro Stunde).
   const API_URL = "https://script.google.com/macros/s/AKfycbyHMaUeg1fKzULLbWwsJQyKI2qJq_tT5oe9uoLVkPyF891uvJODKwIpr1wgBXh8VRH7/exec";
   const API_TOKEN = "tannenhof-demo";
 
@@ -478,7 +504,7 @@
   const catSelect = document.getElementById("cat");
   ROOMS.forEach(r => {
     const slides = r.alt.map((a, i) => {
-      const f = `img/zimmer-${r.slug}-${i+1}.jpg`;
+      const f = `img/zimmer-${r.slug}-${i+1}.webp`;
       return `<figure class="ph" data-file="${f}"><img src="${f}" alt="${a}" loading="lazy" onerror="this.remove()"></figure>`;
     }).join("");
     roomList.insertAdjacentHTML("beforeend", `
@@ -521,13 +547,14 @@
   });
 
   // Datumsfelder vorbelegen
-  const iso = d => d.toISOString().slice(0,10);
+  const iso = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
   const today = new Date(); const t1 = new Date(today); t1.setDate(t1.getDate()+14);
   const t2 = new Date(t1); t2.setDate(t2.getDate()+2);
   document.getElementById("arr").value = iso(t1);
   document.getElementById("dep").value = iso(t2);
   document.getElementById("t_date").value = iso(t1);
   ["arr","dep","t_date"].forEach(id => document.getElementById(id).min = iso(today));
+  { const max = new Date(today); max.setDate(max.getDate()+365); ["arr","dep","t_date"].forEach(id => document.getElementById(id).max = iso(max)); }
 
   // Uhrzeiten je Restaurant
   const SLOTS = {
@@ -543,7 +570,12 @@
     const res = await fetch(API_URL, {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body:JSON.stringify({...payload, token:API_TOKEN})});
     return res.json();
   }
-  function show(el, html){ el.innerHTML = html; el.classList.add("show"); }
+  // Antworten des Backends nur als Text einsetzen, nie als HTML
+  function show(el, text, strong){
+    el.textContent = text;
+    if (strong) { const b = document.createElement("strong"); b.textContent = strong; el.append(b); }
+    el.classList.add("show");
+  }
   const val = id => document.getElementById(id).value;
 
   // Verfügbarkeit: Kalender mit gesperrten Tagen, Buchung läuft über Ferdinand
@@ -651,13 +683,19 @@
   document.getElementById("tableForm").addEventListener("submit", async e => {
     e.preventDefault();
     const out = document.getElementById("tableResult");
-    const payload = {action:"book_table", restaurant:val("t_venue"), date:val("t_date"), time:val("t_time"), persons:+val("t_pers"), name:val("t_name"), phone:val("t_phone"), source:"Website"};
+    if (val("t_company")) { show(out, "Vielen Dank."); return; } // Spam-Falle
+    const btn = e.submitter || e.target.querySelector("button[type=submit]");
+    if (btn.disabled) return;
+    const payload = {action:"book_table", restaurant:val("t_venue"), date:val("t_date"), time:val("t_time"), persons:+val("t_pers"), name:val("t_name").trim(), phone:val("t_phone").trim(), source:"Website"};
     show(out, "Einen Moment …");
+    btn.disabled = true;
     try{
       const r = await callApi(payload);
       if(r.demo){ show(out, `Demo-Modus: Tisch im ${payload.restaurant} am ${payload.date} um ${payload.time} Uhr für ${payload.persons} Personen erfasst.`); return; }
-      show(out, r.ok ? `Reserviert. Ihre Nummer: <strong>${r.reservation_id}</strong>` : (r.error || "Die Reservierung hat nicht geklappt."));
+      if (r.ok) show(out, (r.bereits_reserviert ? "Diese Reservierung besteht bereits. Ihre Nummer: " : "Reserviert (Demo). Ihre Nummer: "), String(r.reservation_id));
+      else show(out, String(r.error || "Die Reservierung hat nicht geklappt."));
     }catch(err){ show(out, "Keine Verbindung zum Reservierungssystem. Bitte sprechen Sie mit Ferdinand."); }
+    finally{ btn.disabled = false; }
   });
 </script>
 </body>

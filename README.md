@@ -16,14 +16,14 @@ Ein vollständig erfundenes 4-Sterne-Superior-Hotel im Hochschwarzwald mit einem
 |---|---|---|
 | **Butler „Ferdinand“** | Chat und Sprachanruf im selben Website-Widget (Telefonanbindung per SIP vorbereitet) | Beantwortet Fragen zu Zimmern, Restaurants, Spa und Anreise, stellt die Speisekarten auf Wunsch als PDF-Link in den Chat, prüft freie Zimmer und Tische und bucht – live im Google Sheet. |
 
-Ferdinand antwortet standardmäßig auf Deutsch und wechseln bei Bedarf auf Englisch, Französisch, Italienisch oder Niederländisch.
+Ferdinand antwortet standardmäßig auf Deutsch und wechselt bei Bedarf auf Englisch, Französisch, Italienisch oder Niederländisch.
 
 ## Architektur
 
 ![Architektur-Übersicht: Butler Ferdinand per Chat und Sprachanruf](img/repo-uebersicht.png)
 
 - **Butler Ferdinand:** ein ElevenLabs-Agent für Text und Sprache mit vier Webhook-Tools (Zimmer prüfen, Zimmer buchen, Tisch prüfen, Tisch reservieren). Der System-Prompt regelt beide Kanäle getrennt: im Sprachanruf kurze, vorlesbare Sätze ohne Adressen und Sonderzeichen, im Chat Euro-Zeichen, kurze Listen und Markdown-Links zu den Speisekarten. Wissensbasis: Hotelfakten plus sprechgerecht aufbereitete Speisekarten; dazu Aussprache-Wörterbücher für Ortsnamen, Zimmer und Gerichte.
-- **Backend:** Google Apps Script als Web-App (API mit Token), Google Sheet als „Hotelsystem“ mit Zimmern, Belegung und Tischreservierungen.
+- **Backend:** Google Apps Script als Web-App, Google Sheet als „Hotelsystem“ mit Zimmern, Belegung und Tischreservierungen. Zwei Schlüssel: ein geheimer für Ferdinand, ein öffentlicher für das Tischformular, der nur Tische prüfen und reservieren darf. Dazu Eingabeprüfung, Schutz vor Formeln im Sheet, Buchungslimit pro Stunde, Erkennung doppelter Buchungen und eine täglich erneuerte Demo-Belegung.
 - **Website:** statischer One-Pager (HTML, CSS, JavaScript) auf GitHub Pages. Das Tischformular schreibt direkt über Apps Script ins Sheet. Die Zimmer-Verfügbarkeit öffnet bewusst einen gesperrten Kalender und leitet zu Ferdinand weiter.
 - **Bilder:** KI-generiert (OpenAI Images).
 
@@ -43,9 +43,9 @@ Tischreservierungen laufen genauso, inklusive Ruhetagen und belegter Uhrzeiten.
 
 | Datei | Zweck |
 |---|---|
-| `index.html`, `img/` | Website und Bilder |
+| `index.html`, `img/`, `fonts/` | Website, Bilder (WebP) und lokal eingebundene Schriften |
 | `menus/` | Speisekarten Belvedere und Kaminstube als PDF (auf der Website verlinkt) |
-| `docs/wissensbasis.md` | Wissensbasis für beide Agenten |
+| `docs/wissensbasis.md` | Wissensbasis von Ferdinand |
 | `docs/speisekarten.md` | Speisekarten als Wissensdokument (Listenform) |
 | `docs/Belvedere-Speisekarte-Butler.md`, `docs/Kaminstube-Speisekarte-Butler.md` | Speisekarten fürs Telefon: Kurzfassungen zum Vorlesen, Details auf Nachfrage |
 | `docs/Tannenhof-Zimmer.pls`, `docs/Tannenhof-Aussprache-*.pls` | Aussprache-Wörterbücher (Hinterzarten, Suite, Schäufele …) |
@@ -54,6 +54,12 @@ Tischreservierungen laufen genauso, inklusive Ruhetagen und belegter Uhrzeiten.
 | `docs/Code.gs` | Apps-Script-Backend: Verfügbarkeit, Zimmerbuchung, Tischreservierung |
 | `docs/ANLEITUNG.md` | Einrichtung Schritt für Schritt |
 | `docs/bilder-prompts.json` | Prompts für die Bildgenerierung |
+
+## Sicherheit und Datenschutz
+
+- **Ferdinand:** nur auf der Demo-Domain einsetzbar, Tages- und Gleichzeitigkeitslimit, maximal 5 Minuten pro Gespräch. Guardrails gegen Themenabweichung, Manipulation und unangemessene Inhalte; der System-Prompt regelt Demo-Hinweis, Vertraulichkeit und Datensparsamkeit.
+- **Daten:** Gesprächsverläufe werden 30 Tage gespeichert, Audio gar nicht. Gast-Buchungen werden 14 Tage nach dem Termin automatisch gelöscht.
+- **Website:** keine Verbindung zu Google Fonts, Widget-Version fest eingebunden, nicht für Suchmaschinen indexiert.
 
 ## Konzept und Umsetzung
 

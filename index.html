@@ -384,11 +384,11 @@
     <div class="wrap">
       <div>
         <h2>Sprechen Sie mit unserem Butler</h2>
-        <p>Unser digitaler Butler Ferdinand beantwortet Ihre Fragen rund um die Uhr, prüft freie Zimmer und reserviert Ihren Tisch. Per Sprachanruf direkt hier im Browser, auf Deutsch, Englisch und in weiteren Sprachen.</p>
+        <p>Unser digitaler Butler Ferdinand beantwortet Ihre Fragen rund um die Uhr, prüft freie Zimmer und reserviert Ihren Tisch. Schriftlich im Chat oder per Sprachanruf direkt hier im Browser, auf Deutsch, Englisch und in weiteren Sprachen.</p>
       </div>
       <div class="butler-cta">
         <button class="voice-btn" type="button" data-voice><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Im Browser mit Ferdinand sprechen</button>
-        <span class="voice-note">Mikrofon erlauben · max. 5 Minuten · Demo</span>
+        <span class="voice-note">Mikrofon erlauben · max. 5 Minuten · oder unten rechts schreiben</span>
       </div>
     </div>
   </section>
@@ -447,14 +447,12 @@
     </div>
     <div class="cal-actions">
       <button class="call" type="button" data-voice>Mit Ferdinand sprechen</button>
-      <button class="chat" type="button" id="calChat" hidden>Im Chat fragen</button>
+      <button class="chat" type="button" id="calChat" hidden>Schreiben</button>
     </div>
   </div>
 </dialog>
 
-<!-- ElevenLabs-Chat-Widget: Website-Chat des Hotel Tannenhof (unten rechts) -->
-<elevenlabs-convai id="chatWidget" agent-id="agent_3101m4g9v3jxf1jamc4zskhkgang"></elevenlabs-convai>
-<!-- ElevenLabs-Voice-Widget: Butler Ferdinand im Browser (unten links, Platzierung in ElevenLabs eingestellt) -->
+<!-- ElevenLabs-Widget: Butler Ferdinand – Chat und Sprachanruf in einem (unten rechts) -->
 <elevenlabs-convai id="ferdinandWidget" agent-id="agent_3501m4g7phzee0dsype7tdrgaqdc"></elevenlabs-convai>
 <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
@@ -602,7 +600,7 @@
 
   // Chat-Knopf im Kalender
   const chatBtn = document.getElementById("calChat");
-  const widget = () => document.getElementById("chatWidget");
+  const widget = () => document.getElementById("ferdinandWidget");
   // Sprachanruf mit Ferdinand im Browser starten: Startknopf im Widget suchen und klicken
   function findButtons(root, out = []) {
     root.querySelectorAll("*").forEach(el => {
@@ -625,8 +623,9 @@
   chatBtn.addEventListener("click", () => {
     cal.close();
     const w = widget(); if (!w) return;
-    const btn = w.shadowRoot && w.shadowRoot.querySelector("button");
-    if (btn) btn.click(); else w.scrollIntoView({behavior:"smooth"});
+    const btns = w.shadowRoot ? findButtons(w.shadowRoot) : [];
+    const chat = btns.find(b => /schreiben|nachricht|chat|message/i.test(b.textContent + " " + (b.getAttribute("aria-label") || "")));
+    if (chat) chat.click(); else w.scrollIntoView({behavior:"smooth"});
   });
 
   document.getElementById("availForm").addEventListener("submit", e => { e.preventDefault(); openCal(); });

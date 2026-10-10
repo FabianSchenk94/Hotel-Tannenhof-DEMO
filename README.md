@@ -6,25 +6,23 @@
 
 > Fiktives Demo-Hotel. Kein reales Haus, keine echten Buchungen.
 
-![Die Demo-Website: Startseite, Restaurants mit Speisekarten, gesperrter Kalender und Mobilansicht mit Website-Chat](img/website-vorschau.png)
+![Die Demo-Website mit Butler Ferdinand: Startseite, Butler-Abschnitt, gesperrter Kalender und Mobilansicht](img/website-vorschau.png)
 
-**Ausprobieren:** Auf der Website unten links „Anruf starten“ oder im Abschnitt „Sprechen Sie mit unserem Butler“ klicken, Mikrofon erlauben und mit Ferdinand sprechen (Demo, max. 5 Minuten).
+**Ausprobieren:** Auf der Website unten rechts Ferdinand öffnen und **schreiben** oder **anrufen** (Mikrofon erlauben, Demo, max. 5 Minuten). Den Sprachanruf startet auch der Button „Im Browser mit Ferdinand sprechen“.
 
-Ein vollständig erfundenes 4-Sterne-Superior-Hotel im Hochschwarzwald als Spielwiese für zwei KI-Agenten:
+Ein vollständig erfundenes 4-Sterne-Superior-Hotel im Hochschwarzwald mit einem KI-Butler, der schreibt, spricht und bucht:
 
-| Agent | Kanal | Aufgabe |
+| Agent | Kanäle | Aufgabe |
 |---|---|---|
-| **Website-Chat** | Chat-Widget auf der Website | Beantwortet Fragen zu Zimmern, Restaurants, Speisekarten, Spa und Anreise. Bucht nicht selbst, sondern verweist auf Ferdinand. |
-| **Telefon-Butler „Ferdinand“** | Sprachanruf direkt im Browser (Telefonanbindung per SIP vorbereitet) | Beantwortet Fragen, prüft freie Zimmer und Tische, bucht Zimmer und reserviert Tische – live im Google Sheet. |
+| **Butler „Ferdinand“** | Chat und Sprachanruf im selben Website-Widget (Telefonanbindung per SIP vorbereitet) | Beantwortet Fragen zu Zimmern, Restaurants, Spa und Anreise, stellt die Speisekarten auf Wunsch als PDF-Link in den Chat, prüft freie Zimmer und Tische und bucht – live im Google Sheet. |
 
-Beide Agenten antworten standardmäßig auf Deutsch und wechseln bei Bedarf auf Englisch, Französisch, Italienisch oder Niederländisch.
+Ferdinand antwortet standardmäßig auf Deutsch und wechseln bei Bedarf auf Englisch, Französisch, Italienisch oder Niederländisch.
 
 ## Architektur
 
-![Architektur-Übersicht: Website-Chat und Telefon-Butler](img/repo-uebersicht.png)
+![Architektur-Übersicht: Butler Ferdinand per Chat und Sprachanruf](img/repo-uebersicht.png)
 
-- **Website-Chat:** ElevenLabs Chat-Agent im Textmodus. Greift nur auf die Wissensbasis zu, hat keine Tools. Bei Buchungswünschen verweist er auf Ferdinand.
-- **Telefon-Butler:** ElevenLabs Voice Agent mit vier Webhook-Tools (Zimmer prüfen, Zimmer buchen, Tisch prüfen, Tisch reservieren). Nutzt dieselbe Wissensbasis wie der Chat, ergänzt um sprechgerecht aufbereitete Speisekarten und ein Aussprache-Wörterbuch.
+- **Butler Ferdinand:** ein ElevenLabs-Agent für Text und Sprache mit vier Webhook-Tools (Zimmer prüfen, Zimmer buchen, Tisch prüfen, Tisch reservieren). Der System-Prompt regelt beide Kanäle getrennt: im Sprachanruf kurze, vorlesbare Sätze ohne Adressen und Sonderzeichen, im Chat Euro-Zeichen, kurze Listen und Markdown-Links zu den Speisekarten. Wissensbasis: Hotelfakten plus sprechgerecht aufbereitete Speisekarten; dazu Aussprache-Wörterbücher für Ortsnamen, Zimmer und Gerichte.
 - **Backend:** Google Apps Script als Web-App (API mit Token), Google Sheet als „Hotelsystem“ mit Zimmern, Belegung und Tischreservierungen.
 - **Website:** statischer One-Pager (HTML, CSS, JavaScript) auf GitHub Pages. Das Tischformular schreibt direkt über Apps Script ins Sheet. Die Zimmer-Verfügbarkeit öffnet bewusst einen gesperrten Kalender und leitet zu Ferdinand weiter.
 - **Bilder:** KI-generiert (OpenAI Images).
@@ -48,11 +46,11 @@ Tischreservierungen laufen genauso, inklusive Ruhetagen und belegter Uhrzeiten.
 | `index.html`, `img/` | Website und Bilder |
 | `menus/` | Speisekarten Belvedere und Kaminstube als PDF (auf der Website verlinkt) |
 | `docs/wissensbasis.md` | Wissensbasis für beide Agenten |
-| `docs/speisekarten.md` | Speisekarten als Wissensdokument für den Website-Chat |
+| `docs/speisekarten.md` | Speisekarten als Wissensdokument (Listenform) |
 | `docs/Belvedere-Speisekarte-Butler.md`, `docs/Kaminstube-Speisekarte-Butler.md` | Speisekarten fürs Telefon: Kurzfassungen zum Vorlesen, Details auf Nachfrage |
 | `docs/Tannenhof-Zimmer.pls`, `docs/Tannenhof-Aussprache-*.pls` | Aussprache-Wörterbücher (Hinterzarten, Suite, Schäufele …) |
-| `docs/agent-telefon-butler.md` | System-Prompt, Tool-Definitionen und Testfälle des Telefon-Butlers |
-| `docs/agent-website-chat.md` | System-Prompt und Testfragen des Website-Chats |
+| `docs/agent-telefon-butler.md` | System-Prompt (Chat und Sprache), Tool-Definitionen und Testfälle von Ferdinand |
+| `docs/agent-website-chat.md` | Archiv: frühere Variante mit separatem FAQ-Chat (nicht mehr eingebunden) |
 | `docs/Code.gs` | Apps-Script-Backend: Verfügbarkeit, Zimmerbuchung, Tischreservierung |
 | `docs/ANLEITUNG.md` | Einrichtung Schritt für Schritt |
 | `docs/bilder-prompts.json` | Prompts für die Bildgenerierung |

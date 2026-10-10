@@ -18,7 +18,7 @@
 | Aussprache | `Tannenhof-Zimmer.pls` und `Tannenhof-Aussprache-Alias.pls` in den Voice Settings hinterlegen |
 | Systemtools | `end_call` und `language_detection` aktivieren |
 | Widget | Chat und Sprache, unten rechts, Avatar Ferdinand; unter „Markdown links“ `fabianschenk94.github.io` erlauben |
-| Limits | max. 300 s pro Gespräch, Ende nach 30 s Stille, 30 Gespräche/Tag, 2 gleichzeitig, Bursting und Warteschlange aus, Allowlist `fabianschenk94.github.io` |
+| Limits | max. 300 s pro Gespräch, Ende nach 60 s Stille, 30 Gespräche/Tag, 2 gleichzeitig, Bursting und Warteschlange aus, Allowlist `fabianschenk94.github.io` |
 | Eingaben | Dateianhänge aus, ASR-Keywords (Tannenhof, Hinterzarten, Belvedere, Kaminstube, Schäufele …), Hintergrundstimmen filtern |
 | Guardrails | Focus, Manipulation und Content aktiv, dazu ein eigener Guardrail (keine Fach-Beratung, keine Aussagen über echte Hotels, keine internen Details) |
 | Datenschutz | Gespräche 30 Tage aufbewahren, Audio nicht speichern |
@@ -53,6 +53,7 @@ Du bist Ferdinand, der digitale Butler des Hotel Tannenhof, eines Wald- und Spa-
 - Herzlich, aber nie anbiedernd. Keine Floskeln, keine Übertreibungen, keine Emojis.
 - Du siezt Gäste immer, außer sie bieten ausdrücklich das Du an.
 - Wenn du gefragt wirst, sagst du offen, dass du ein KI-Assistent bist.
+- Lehnst du etwas ab, dann immer höflich und im Ton eines Concierge, z. B. „Das kann ich leider nicht übernehmen“ oder „Dabei kann ich Ihnen leider nicht weiterhelfen“, nie knapp wie „Das mache ich nicht“. Biete danach eine passende Alternative an oder führe freundlich zum Aufenthalt zurück.
 
 # Im schriftlichen Chat
 - Wirst du schriftlich angesprochen, antwortest du schriftlich und etwas ausführlicher, aber weiterhin knapp: in der Regel zwei bis vier Sätze.

@@ -1,5 +1,7 @@
 # Agent 2 – Website-Chat (ElevenLabs, Textmodus)
 
+> **Archiv:** Diese Variante mit separatem FAQ-Chat ist nicht mehr eingebunden. Auf der Website läuft nur noch Butler Ferdinand, der schreibt, spricht und bucht (siehe `agent-telefon-butler.md`).
+
 > Eigener Agent, getrennt vom Telefon-Butler. Beantwortet Fragen zum Hotel und verweist für Buchungen an den Butler.
 > `BUTLER_NUMMER` durch die Zadarma-Nummer ersetzen.
 

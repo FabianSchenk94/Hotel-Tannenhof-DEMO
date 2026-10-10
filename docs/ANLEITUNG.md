@@ -5,9 +5,9 @@ JavaScript, das direkt in deinem Google-Konto läuft und mit Google Sheets verbu
 Als **Web-App** veröffentlicht, bekommt das Script eine eigene URL. Ruft jemand diese URL auf (ElevenLabs-Agent oder Website), liest bzw. schreibt das Script im Sheet und antwortet mit JSON.
 
 ```
-Anrufer → Zadarma-Nummer → Telefon-Butler (ElevenLabs) ──(Webhook-Tools)──► Apps-Script-URL ──► Google Sheet
+Website-Widget (Chat + Sprachanruf) → Ferdinand (ElevenLabs) ──(Webhook-Tools)──► Apps-Script-URL ──► Google Sheet
 Website-Tischformular ─────────────────────────────(fetch)──────────►        "
-Website-Chat (ElevenLabs) → nur Wissensbasis, keine Tools – verweist für Buchungen auf den Telefon-Butler
+optional: Telefonnummer (SIP) → derselbe Agent
 ```
 
 ## 1. Sheet + Script anlegen (ca. 10 Min.)
@@ -56,4 +56,4 @@ Twilio vergibt deutsche Ortsnummern nur an Firmen. Zadarma vergibt sie an Privat
 ## 6. Website veröffentlichen (GitHub Pages)
 1. Neues öffentliches Repository, z. B. `hotel-tannenhof`, `index.html` und den Ordner `img/` mit den 24 Bildern hochladen (Dateinamen siehe `Tannenhof_Bild-Prompts.pdf`).
 2. **Settings → Pages → Branch: main / root** → nach 1–2 Minuten erreichbar unter `https://fabianschenk94.github.io/hotel-tannenhof/`.
-3. ElevenLabs-Widget: beim Chat-Agenten unter **Deploy → Channels → Widget** den Embed-Code kopieren (dort auch Avatar, Farben und Texte), unten in `index.html` an der markierten Stelle einfügen. Die Domain `fabianschenk94.github.io` in ElevenLabs als erlaubte Domain eintragen.
+3. ElevenLabs-Widget: bei Ferdinand unter **Deploy → Channels → Widget** den Embed-Code kopieren (dort auch Avatar, Farben, Texte und unter „Markdown links“ die Domain der Website für die Speisekarten-Links), unten in `index.html` an der markierten Stelle einfügen. Die Domain `fabianschenk94.github.io` in ElevenLabs als erlaubte Domain eintragen.

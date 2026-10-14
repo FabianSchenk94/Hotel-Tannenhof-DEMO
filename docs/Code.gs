@@ -394,9 +394,11 @@ function name_(v) {
 }
 
 function phone_(v, needed) {
-  const s = text_(v, 30);
+  // Demo: bewusst großzügig. Erfundene Nummern (zu kurz, zu lang, 0800 …) sind erlaubt,
+  // nur Zeichen ausserhalb von Ziffern und Telefon-Trennzeichen werden abgelehnt.
+  const s = text_(v, 40);
   if (!s && !needed) return '';
-  if (!/^[+0-9 ()\/.-]+$/.test(s) || digits_(s).length < 6 || digits_(s).length > 15) {
+  if (!/^[+0-9 ()\/.-]+$/.test(s) || digits_(s).length < 3 || digits_(s).length > 20) {
     fail_('Bitte eine gültige Telefonnummer angeben.');
   }
   return s;

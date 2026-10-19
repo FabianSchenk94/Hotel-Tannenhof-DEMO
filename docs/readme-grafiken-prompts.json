@@ -1,0 +1,35 @@
+{
+  "projekt": "Hotel Tannenhof – README-Grafiken (img)",
+  "modell": "gpt-image-2.5-sunburst (OpenAI Images, Endpunkt images/edits, quality high, webp)",
+  "hinweis": "website-preview / website-vorschau sind echte Screenshots der Live-Seite, nicht generiert.",
+  "bilder": [
+    {
+      "datei": "repo-uebersicht.webp",
+      "modus": "edit",
+      "groesse": "1536x864",
+      "vorlagen": [
+        "img/repo-uebersicht.png (Original)"
+      ],
+      "prompt": "Redraw this exact architecture diagram as a clean flat infographic. Keep the layout, every box, every icon, every arrow and EVERY piece of text exactly as it is, letter for letter, in the same positions and sizes.\nTypefaces: the large title \"Hotel Tannenhof – KI-Agenten-Demo\" stays in the SAME elegant, light, high-contrast serif typeface as in the original (like Marcellus). All other text stays in the same clean sans-serif.\nChange only the styling:\n- Replace the background photograph of the hotel and its colour fade with one flat, even dark navy colour (#16233F). No photo, no gradient, no vignette.\n- Remove the thin gold line under the title.\n- The small label \"KERNFUNKTIONEN\" becomes \"Kernfunktionen\" in normal sentence case, same gold colour, slightly larger, no letter spacing.\n- Boxes: flat fills one step lighter than the background, no outlines, except the highlighted \"Butler „Ferdinand“\" box, which keeps its gold outline and dark green fill. Dashed lines stay dashed, gold.\nDo not add, remove, translate or rephrase any text.\n"
+    },
+    {
+      "datei": "buchungsablauf.webp",
+      "modus": "edit",
+      "groesse": "1536x864",
+      "vorlagen": [
+        "img/buchungsablauf.png (Original)"
+      ],
+      "prompt": "Redraw this exact two-column diagram as a clean flat infographic. Keep the layout, every speech bubble, every numbered step, every dashed connector, the table at the bottom and EVERY piece of text exactly as it is, letter for letter and digit for digit, in the same positions and sizes. The code lines stay in the same monospace typeface with exactly the same characters.\nTypefaces: the large title \"Eine Zimmerbuchung mit Butler Ferdinand\" stays in the SAME elegant, light serif typeface as in the original (like Marcellus). All other text stays in the same sans-serif, code in monospace.\nChange only the styling:\n- Replace the background photograph and its colour fade with one flat, even dark navy colour (#16233F). No photo, no gradient, no vignette.\n- Remove the thin gold line under the title.\n- The small spaced capital labels become normal sentence case, same gold colour, slightly larger, no letter spacing: \"GESPRÄCH\" becomes \"Gespräch\", \"IM SYSTEM\" becomes \"Im System\", \"GOOGLE SHEET · TABELLENBLATT „ZIMMERBUCHUNGEN“ · NEUE ZEILE (AUSZUG)\" becomes \"Google Sheet · Tabellenblatt „Zimmerbuchungen“ · neue Zeile (Auszug)\". The speaker tags inside the bubbles \"GAST\" and \"FERDINAND\" become \"Gast\" and \"Ferdinand\".\n- Bubbles and step boxes: flat fills one step lighter than the background (Ferdinand's bubbles stay dark green), no outlines.\nDo not add, remove, translate or rephrase any other text.\n"
+    },
+    {
+      "datei": "sicherheit.webp",
+      "modus": "edit",
+      "groesse": "1536x864",
+      "vorlagen": [
+        "repo-uebersicht.webp (Stilvorlage)",
+        "danach Korrektur"
+      ],
+      "prompt": "Use the reference image only as a style template: same navy background (#16233F), same flat boxes, gold (#D4A84B) icons and section labels, same layout grammar with title top left, subtitle, content, small footer line. Do NOT copy any text or content from the reference image. Title in an elegant light serif typeface (like Marcellus), everything else in the same clean sans-serif. No photo, no gradient, no glow, no shadow. Footer line: left \"Fiktives Demo-Projekt von Fabian Schenk\", right \"fabianschenk94.github.io/Hotel-Tannenhof-DEMO\". Render every German text exactly as written in quotes, spelled correctly with umlauts, and add no other text.\n\nTitle: \"Wer sieht was\". Subtitle: \"Sicherheit und Datenschutz im Hotel Tannenhof\". Four tall columns connected left to right by gold arrows, each a flat box with an icon, a bold heading, a small grey role line and a short list where each line starts with a small gold check or a small grey cross icon: Column 1 browser icon \"Website\" / \"was der Gast sieht\": check \"Tischformular mit öffentlichem Schlüssel\", check \"darf nur Tische prüfen und reservieren\", cross \"keine Verbindung zu Google Fonts\", cross \"nicht für Suchmaschinen indexiert\". Column 2 bow-tie icon, gold outline, dark green fill \"Butler Ferdinand\" / \"ElevenLabs-Agent\": check \"nur auf der Demo-Domain\", check \"Tages- und Gleichzeitigkeitslimit, max. 5 Minuten\", check \"Guardrails gegen Manipulation\", cross \"Audio wird nicht gespeichert\". Column 3 code icon \"Google Apps Script\" / \"die einzige Tür zum Sheet\": check \"geheimer Schlüssel für Ferdinand\", check \"Eingabeprüfung und Schutz vor Formeln\", check \"Buchungslimit pro Stunde\", check \"Erkennung doppelter Buchungen\". Column 4 table icon \"Google Sheet\" / \"das Hotelsystem\": check \"Zimmer, Belegung, Tischreservierungen\", check \"Gastbuchungen 14 Tage nach dem Termin gelöscht\", check \"Demo-Belegung täglich erneuert\", check \"Gespräche 30 Tage gespeichert\".\n\n--- Korrektur ---\nKeep this image exactly as it is: same layout, colours, icons, boxes and every other text letter for letter, including all German umlauts. Make only these two text changes, in the same typeface, size, colour and position:\n1. In the \"Butler Ferdinand\" column, the last line \"Audio wird nicht gespeichert\" becomes: Gespräche 30 Tage, kein Audio   and its grey cross icon becomes a gold check icon like the other lines.\n2. In the \"Google Sheet\" column, the last line \"Gespräche 30 Tage gespeichert\" becomes: Einträge nur über Apps Script   (keep its gold check icon).\nNothing else changes.\n"
+    }
+  ]
+}

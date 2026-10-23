@@ -26,6 +26,7 @@ Ferdinand antwortet standardmäßig auf Deutsch und wechselt bei Bedarf auf Engl
 | **Tool-Einsatz**: vier Webhook-Tools (Zimmer und Tische prüfen und buchen), Buchung erst nach klarem Ja | [`docs/agent-telefon-butler.md`](docs/agent-telefon-butler.md), [`docs/Code.gs`](docs/Code.gs) |
 | **Backend ohne Server**: Google Apps Script als API, Google Sheet als Hotelsystem, Eingabeprüfung, Limits, Erkennung doppelter Buchungen | [`docs/Code.gs`](docs/Code.gs) |
 | **Sprach-UX**: vorlesbare Sätze, relative Daten wie „nächstes Wochenende“, Aussprache-Wörterbücher für Orte, Zimmer und Gerichte | [`docs/Tannenhof-Aussprache-IPA.pls`](docs/Tannenhof-Aussprache-IPA.pls), [`docs/Belvedere-Speisekarte-Butler.md`](docs/Belvedere-Speisekarte-Butler.md) |
+| **Conversation Design**: Dialog-Flow mit Happy Path, Fallbacks und Eskalation sowie ein Persona-Steckbrief mit Ton, Sprechweise und Grenzen | [`docs/dialog-flow-ferdinand.md`](docs/dialog-flow-ferdinand.md), [`docs/persona-ferdinand.md`](docs/persona-ferdinand.md) |
 | **Wissensaufbereitung**: Hotelfakten und Speisekarten so geschrieben, dass ein Agent sie sicher wiedergibt | [`docs/wissensbasis.md`](docs/wissensbasis.md), [`docs/speisekarten.md`](docs/speisekarten.md) |
 | **Mehrsprachigkeit**: Deutsch, Englisch, Französisch, Italienisch, Niederländisch | [`docs/agent-telefon-butler.md`](docs/agent-telefon-butler.md) |
 | **Sicherheit und Datenschutz**: getrennte Schlüssel, Domain-Bindung, Löschfristen | siehe unten |
@@ -51,6 +52,16 @@ Ferdinand antwortet standardmäßig auf Deutsch und wechselt bei Bedarf auf Engl
 
 Tischreservierungen laufen genauso, inklusive Ruhetagen und belegter Uhrzeiten.
 
+## Dialog-Flow und Persona
+
+![Wie Ferdinand ein Gespräch führt: Happy Path, Fallbacks und Eskalation](img/dialog-flow.webp)
+
+Zu jedem Schritt des Happy Path gibt es einen Fallback, der das Gespräch wieder auf Kurs bringt. Drei Fälle eskalieren an das Hotel: Stornierung oder Änderung, Gruppen und Veranstaltungen sowie Zahlungsdaten oder ein technischer Ausfall. Alle Flows (als Mermaid-Diagramme) stehen in [`docs/dialog-flow-ferdinand.md`](docs/dialog-flow-ferdinand.md).
+
+![Persona-Steckbrief Butler Ferdinand: Steckbrief, Er tut und Er tut nie, Sprechweise, Beispielsätze](img/persona-ferdinand.webp)
+
+Ferdinand ist ein erfahrener Concierge eines guten Hauses: höflich, ruhig, aufmerksam, herzlich, aber nie anbiedernd, mit einem Butler-Witz auf Wunsch. Ton, Sprechweise, Audio-Tags und Grenzen: [`docs/persona-ferdinand.md`](docs/persona-ferdinand.md).
+
 ## Inhalt
 
 | Datei | Zweck |
@@ -62,6 +73,8 @@ Tischreservierungen laufen genauso, inklusive Ruhetagen und belegter Uhrzeiten.
 | `docs/Belvedere-Speisekarte-Butler.md`, `docs/Kaminstube-Speisekarte-Butler.md` | Speisekarten fürs Telefon: Kurzfassungen zum Vorlesen, Details auf Nachfrage |
 | `docs/Tannenhof-Zimmer.pls`, `docs/Tannenhof-Aussprache-*.pls` | Aussprache-Wörterbücher (Hinterzarten, Suite, Schäufele …) |
 | `docs/agent-telefon-butler.md` | System-Prompt (Chat und Sprache), Tool-Definitionen und Testfälle von Ferdinand |
+| `docs/dialog-flow-ferdinand.md` | Dialog-Flow: Happy Path, Fallbacks und Eskalation als Mermaid-Diagramme und Tabellen |
+| `docs/persona-ferdinand.md` | Persona-Steckbrief: Steckbrief, Persönlichkeit, Ton, Sprechweise, Grenzen |
 | `docs/agent-website-chat.md` | Archiv: frühere Variante mit separatem FAQ-Chat (nicht mehr eingebunden) |
 | `docs/Code.gs` | Apps-Script-Backend: Verfügbarkeit, Zimmerbuchung, Tischreservierung |
 | `docs/ANLEITUNG.md` | Einrichtung Schritt für Schritt |

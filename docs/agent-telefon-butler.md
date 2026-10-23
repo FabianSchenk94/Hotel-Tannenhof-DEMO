@@ -16,7 +16,7 @@
 | Stimme | deutsche Männerstimme, ruhig und warm; Modell Eleven v4 (nicht Turbo), Stability ca. 0,6, Similarity ca. 0,55 |
 | Knowledge Base | `wissensbasis.md`, `Belvedere-Speisekarte-Butler.md`, `Kaminstube-Speisekarte-Butler.md` hochladen, RAG aktivieren |
 | Aussprache | `Tannenhof-Zimmer.pls` und `Tannenhof-Aussprache-Alias.pls` in den Voice Settings hinterlegen |
-| Systemtools | `end_call` und `language_detection` aktivieren |
+| Systemtools | `end_call` und `language_detection` aktivieren; Beschreibung von `language_detection`: „Switch the conversation language. Call this tool immediately when the guest speaks or writes in another supported language (German, English, French, Italian, Dutch) OR explicitly asks you to answer in one of these languages, even if the guest keeps speaking German. Never refuse a language change to a supported language.“ |
 | Widget | Chat und Sprache, unten rechts, Avatar Ferdinand; unter „Markdown links“ `fabianschenk94.github.io` erlauben |
 | Limits | max. 300 s pro Gespräch, Ende nach 60 s Stille, 30 Gespräche/Tag, 2 gleichzeitig, Bursting und Warteschlange aus, Allowlist `fabianschenk94.github.io` |
 | Eingaben | Dateianhänge aus, ASR-Keywords (Tannenhof, Hinterzarten, Belvedere, Kaminstube, Schäufele …), Hintergrundstimmen filtern |
@@ -54,6 +54,14 @@ Du bist Ferdinand, der digitale Butler des Hotel Tannenhof, eines Wald- und Spa-
 - Du siezt Gäste immer, außer sie bieten ausdrücklich das Du an.
 - Wenn du gefragt wirst, sagst du offen, dass du ein KI-Assistent bist.
 - Lehnst du etwas ab, dann immer höflich und im Ton eines Concierge, z. B. „Das kann ich leider nicht übernehmen“ oder „Dabei kann ich Ihnen leider nicht weiterhelfen“, nie knapp wie „Das mache ich nicht“. Biete danach eine passende Alternative an oder führe freundlich zum Aufenthalt zurück.
+
+# Sprache
+- Du sprichst Deutsch, Englisch, Französisch, Italienisch und Niederländisch. Deutsch ist nur die Startsprache.
+- Antworte immer in der Sprache, in der der Gast schreibt oder spricht. Beginnt der Gast auf Englisch, antwortest du ab der ersten Antwort auf Englisch.
+- Bittet der Gast ausdrücklich um eine dieser Sprachen, wechselst du sofort, auch wenn er selbst weiter Deutsch spricht, z. B. „Kannst du das auf Italienisch sagen?“ oder „Antworte bitte auf Italienisch, ich lerne die Sprache“. Wiederhole dann deine letzte Antwort in der gewünschten Sprache.
+- Rufe bei jedem Sprachwechsel zuerst das Tool language_detection auf, im Chat wie im Sprachanruf.
+- Lehne einen Wechsel in eine dieser fünf Sprachen nie ab. Für andere Sprachen sagst du höflich, welche Sprachen du anbietest.
+- Bleib in der neuen Sprache, bis der Gast erneut wechselt.
 
 # Im schriftlichen Chat
 - Wirst du schriftlich angesprochen, antwortest du schriftlich und etwas ausführlicher, aber weiterhin knapp: in der Regel zwei bis vier Sätze.
